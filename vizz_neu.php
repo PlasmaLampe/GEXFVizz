@@ -140,19 +140,19 @@
 	        <div id="dcBox" class="span4">
 	          	<h3><a id="zoomDC" href="#">Degree Centrality</a></h3>
 				<?php
-				echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&metric=dc&rank=3"); 
+				echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=dc&rank=3"); 
 				?>
 	        </div>
 	        <div id="ccBox" class="span4">
 	          <h3><a id="zoomCC" href="#">Closeness Centrality</a></h3>
 				<?php
-				echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&metric=cc&rank=3"); 
+				echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=cc&rank=3"); 
 				?>
 	       </div>
 	        <div id="bcBox" class="span4">
 				<h3><a id="zoomBC" href="#">Betweenness Centrality</a></h3>
 				<?php
-				echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&metric=bc&rank=3"); 
+				echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=bc&rank=3"); 
 				?>
 	        </div>
 	      </div>
