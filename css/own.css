@@ -1,0 +1,51 @@
+	hr{
+		color: hsl(200, 0%, 40%);
+		background-color: hsl(200, 0%, 40%);
+		height: 1px;
+	}
+	
+	td{
+		border: 1px solid black;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+    
+	.vspace{
+		width:1000px;
+		height:50px;
+	}
+    	
+    body{
+        background:hsl(0, 0%, 96%);
+	
+	  font-size: large;
+	  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	   font-weight: 300;
+    }
+    
+	/* ------------------------------ */
+	/* sigma.js context : */
+	/* source http://code.google.com/p/testprogramming/source/browse/trunk/javascript/canvas/sigma.js/gexf.html?spec=svn391&r=391 */
+.sigma-parent {
+	margin-left: auto;
+	margin-right: auto;
+  margin-bottom: 10px;
+	position: relative;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  background: #222;
+	width: 800px;
+  height: 450px;
+}
+.sigma-expand {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+/* ------------------------------ */
+
