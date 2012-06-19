@@ -50,12 +50,14 @@
 		    Upload or choose
 		  </li>
 		</ul>
-		
+		<h2>Hold on! We are not ready yet ...</h2>
+		GEXFVizz can use a MYSQL database to create GEXF files about some conferences or you can <br>
+		upload your own files to visualize them. It's up to you ...
 		<ul class="nav nav-pills">
 		  <li class="active">
-		    <a href="uploadorchoose.php">Take the information from the MYSQL DB</a>
+		    <a href="uploadorchoose.php">... take the information from the MYSQL DB</a>
 		  </li>
-		  <li><a href="uploadown.php">No, let me upload my own gexf file</a></li>
+		  <li><a href="uploadown.php">... no, let me upload my own gexf file</a></li>
 		</ul>
 		
 		<hr>

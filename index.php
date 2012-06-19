@@ -58,18 +58,18 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Start social</h2>
+          <h2>Start Social</h2>
            <p>Create amazing visualizations of your gexf files right in your browser. You'll get a persistent link to your graphic, so you can share it with your partners and friends.</p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
         <div class="span4">
           <h2>Understanding</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+           <p>Huge networks can be complex and confusing so you can improve your understanding of the networks and develop new ideas about the underlying structures by visualizing them. GEXFVizz supports you in this task.</p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
         <div class="span4">
-          <h2>Coherences</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <h2>In Your Browser</h2>
+          <p>The whole application can be used within your webbrowser, there is no need to download anything. Unless you want to download your GEXF files to use them in Gephi to do really amazing stuff with it!</p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
       </div>
