@@ -113,10 +113,10 @@
 	        <div id="graphBox" class="span4">
 			<h3>Graph information:</h3>				
 				<?php
-					$nae = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getnodesandedges=1");
-					$dens = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getdensity=1");
+					$nae = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getnodesandedges=1"));
+					$dens = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getdensity=1"));
 					list ($nodes, $edges) = split('#', $nae);
-					echo "The graph contains $nodes nodes and $edges edges<br>The graph density is $dens"
+					echo "The graph contains $nodes nodes and $edges edges<br>The graph density is $dens";
 				?>
 	       </div>
 	        <div id="otherFilesBox" class="span4">
