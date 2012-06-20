@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
     <link href="css/bootstrap.min.theme.css" rel="stylesheet">
     <style type="text/css">
       body {

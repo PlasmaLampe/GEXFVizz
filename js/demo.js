@@ -66,7 +66,12 @@ function init() {
     maxNodeSize: 5
   });
 	
-	parser = sigInst.parseGexf("data/"+findBaseName(getQueryVariable('url')));
+	if(getQueryVariable('url') != false){
+		parser = sigInst.parseGexf("data/"+findBaseName(getQueryVariable('url')));
+	}else{
+		var file = "hash/"+getQueryVariable('id')+".gexf";
+		parser = sigInst.parseGexf(file);
+	}
 	
   (function(){
     var popUp;
