@@ -56,9 +56,9 @@
 		upload your own files to visualize them. It's up to you ...
 		<ul class="nav nav-pills">
 		  <li>
-		    <a href="uploadorchoose.php">Take the information from the MYSQL DB</a>
+		    <a href="uploadorchoose.php">... take the information from the MYSQL DB</a>
 		  </li>
-		  <li class="active"><a href="uploadown.php">No, let me upload my own gexf file</a></li>
+		  <li class="active"><a href="uploadown.php">... no, let me upload my own gexf file</a></li>
 		</ul>
 		<hr>
 

@@ -70,6 +70,7 @@ function init() {
 		parser = sigInst.parseGexf("data/"+findBaseName(getQueryVariable('url')));
 	}else{
 		var file = "hash/"+getQueryVariable('id')+".gexf";
+		alert(file);
 		parser = sigInst.parseGexf(file);
 	}
 	

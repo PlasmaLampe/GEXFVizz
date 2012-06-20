@@ -111,7 +111,7 @@
 					$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
 					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval; 
 				}else{
-					$hashlink = "hash/".$_GET['id'];
+					$hashlink = $_GET['id'];
 					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink; 
 				}
 			?>
@@ -134,7 +134,7 @@
 						$roundDens = round($dens, 2);
 						echo "The graph contains $nodes nodes and $edges edges<br>The graph density is $roundDens";
 					}else{
-						$hashlink = "hash/".$_GET['id'].".gexf";
+						$hashlink = $_GET['id'];
 						
 						$nae = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&getnodesandedges=1");
 						$dens = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&getdensity=1");
@@ -168,7 +168,7 @@
 					if($_GET['url'] != null){
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=dc&rank=3"); 
 					}else{
-						$hashlink = "hash/".$_GET['id'].".gexf";
+						$hashlink = $_GET['id'];
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&metric=dc&rank=3"); 
 					}
 				?>
@@ -179,7 +179,7 @@
 					if($_GET['url'] != null){
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=cc&rank=3"); 
 					}else{
-						$hashlink = "hash/".$_GET['id'].".gexf";
+						$hashlink = $_GET['id'];
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&metric=cc&rank=3"); 
 					}
 				?>
@@ -190,7 +190,7 @@
 					if($_GET['url'] != null){
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=bc&rank=3"); 
 					}else{
-						$hashlink = "hash/".$_GET['id'].".gexf";
+						$hashlink = $_GET['id'];
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&metric=bc&rank=3"); 
 					}
 				?>
