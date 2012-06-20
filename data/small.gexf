@@ -32,9 +32,9 @@
         </nodes>
 
         <edges>
-            <edge id="0" source="0" target="1" />
-			<edge id="1" source="1" target="3" />
-			<edge id="2" source="1" target="2" />
+            <edge id="0" source="0" target="1" weight="3"/>
+			<edge id="1" source="1" target="3" weight="10"/>
+			<edge id="2" source="1" target="2" weight="1"/>
         </edges>
     </graph>
 </gexf>

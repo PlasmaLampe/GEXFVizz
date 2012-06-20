@@ -242,10 +242,17 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
       }
 
       var attvalueNodes = edgeNode.getElementsByTagName('attvalue');
+
       for(k=0; k<attvalueNodes.length; k++){
         var attvalueNode = attvalueNodes[k];
         var attr = attvalueNode.getAttribute('for');
         var val = attvalueNode.getAttribute('value');
+
+		/* mini hack to save the weight out of attvalues*/
+		if(attr=='weight'){
+			edge['weight'] = val;
+		}
+		/* -----------*/
         edge.attributes.push({attr:attr, val:val});
       }
 

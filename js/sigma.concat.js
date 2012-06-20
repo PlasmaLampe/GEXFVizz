@@ -2605,7 +2605,7 @@ function Plotter(nodesCtx, edgesCtx, labelsCtx, hoverCtx, graph, w, h) {
       case 'line':
       default:
         ctx.strokeStyle = color;
-        ctx.lineWidth = edge['displaySize'] / 3;
+        ctx.lineWidth = edge['weight'];
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
