@@ -21,7 +21,7 @@
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
 	<!-- some libs and other needed stuff -->
 	<link rel="stylesheet" href="css/own.css">
