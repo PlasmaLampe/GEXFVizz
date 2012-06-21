@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="css/own.css">
 	
 	<?php
-		include("db.php");
+		include("include/db.php"); // .htaccess secured :)
 	?>
 	
   </head>
@@ -67,18 +67,19 @@
 		
 		<hr>
 
-		<form class="form-horizontal">  
+		<form class="form-horizontal" action="download_extern.php" method="post">  
 		        <fieldset>  
 		          <legend>Still, some configuration is needed</legend>  
 		          <div class="control-group">  
 		            <label class="control-label" for="select01">Select conference</label>  
 		            <div class="controls">  
-		              <select id="select01">  
-		                <option>mLearn</option>  
-		                <option>2</option>  
-		                <option>3</option>  
-		                <option>4</option>  
-		                <option>5</option>  
+		              <select name="conference" id="select01">  
+						<?php
+							$result = mysql_query("SELECT text FROM event");
+							while($row = mysql_fetch_object($result)){
+						  		echo "<option>".$row->text."</option>";
+							}	
+						?>
 		              </select>  
 		            </div>  
 		          </div>
@@ -86,14 +87,14 @@
 		          <div class="control-group">  
 		            <label class="control-label" for="input01">Start year</label>  
 		            <div class="controls">  
-		              <input type="text" value="You can leave this field empty"class="input-xlarge" id="startyear">  
+		              <input name="syear" type="text" value="You can leave this field empty"class="input-xlarge" id="startyear">  
 		            </div>  
 		          </div> 
 		 
 		          <div class="control-group">  
 		            <label class="control-label" for="input02">End year</label>  
 		            <div class="controls">  
-		              <input type="text" value="You can leave this field empty" class="input-xlarge" id="endyear">  
+		              <input type="text" name="eyear" value="You can leave this field empty" class="input-xlarge" id="endyear">  
 		            </div>  
 		          </div>
 		
