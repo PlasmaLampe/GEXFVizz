@@ -17,6 +17,11 @@
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/own.css">
+	
+	<?php
+		include("db.php");
+	?>
+	
   </head>
 
   <body>
