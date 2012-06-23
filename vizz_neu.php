@@ -86,7 +86,15 @@
 		<div class='out'>
 			babab
 		</div>
-
+		
+		<div class="buttons-container">
+			<input style="width:140px" type="button" id='randomlayout' value="random layout">
+			<input style="width:140px" type="button" id='circlayout' value="circular layout">
+			<input style="width:140px" type="button" id='frlayout' value="FR layout">
+		</div>
+		
+		<br>
+		
 		<div id='mainAndListing'>
 			<div id='main'>
 				<div class="span12 sigma-parent" id="sigma-example-parent">

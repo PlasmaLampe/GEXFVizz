@@ -2,6 +2,69 @@ var show_node_as = "person"; //node, book or person
 
 var parser;
 
+sigma.publicPrototype.myRandomLayout = function() {
+  var W = 100,
+      H = 100;
+  
+  this.iterNodes(function(n){
+    n.x = W*Math.random();
+    n.y = H*Math.random();
+  });
+
+  return this.position(0,0,1).draw();
+};
+
+sigma.publicPrototype.myCircularLayout = function() {
+   var R = 100,
+       i = 0,
+       L = this.getNodesCount();
+
+   this.iterNodes(function(n){
+     n.x = Math.cos(Math.PI*(i++)/L)*R;
+     n.y = Math.sin(Math.PI*(i++)/L)*R;
+   });
+
+   return this.position(0,0,1).draw();
+ };
+
+sigma.publicPrototype.myFRLayout = function(iterations) {
+	// FR variables
+	var area = 800 * 600;
+	var temperature = 80;
+	var cooldown = temperature/iterations;
+	var k = Math.sqrt(area / this.getNodesCount());
+	
+	// start with random positions
+	var W = 100,
+      H = 100;
+
+  	this.iterNodes(function(n){
+    	n.x = W*Math.random();
+    	n.y = H*Math.random();
+  	});
+	
+	// now, calculate FR-algorithm
+	function calculateRepulsiveForces(){
+		
+	}
+	
+	function cooldown(){
+		temperature = temperature - cooldown;
+
+	    if (temperature < cooldown)
+	    	temperature = 0;
+	}
+	
+	for(var i=0;i<iterations;i++){
+   	//calculateRepulsiveForces();
+   	//calculateAttractiveForces();
+   	//performDisplacement();
+   	//coolDown();
+   }
+
+   return this.position(0,0,1).draw();
+ };
+
 function findBaseName(url) {
 	var external = url.lastIndexOf('%2F');
 	var cutURL;
@@ -128,7 +191,6 @@ function init() {
 
 	// hide nodes which should not show up at this time
 	sigma.publicPrototype.HideWrongTimeNodes = function(value) {
-		
 		// update slider
 		var tempcurrentDay = slider.getValue();
 		slider.setValue(tempcurrentDay + value);
@@ -162,6 +224,16 @@ function init() {
 		return this.position(0,0,1).draw();
 	};
 
+	document.getElementById('randomlayout').addEventListener('click',function(){
+		sigInst.myRandomLayout();
+	},true);	
+	document.getElementById('circlayout').addEventListener('click',function(){
+		sigInst.myCircularLayout();
+	},true);
+	document.getElementById('frlayout').addEventListener('click',function(){
+		sigInst.myFRLayout();
+	},true);
+	
 	// bind the methods to buttons
 	var diffdays = (maxdateInt - mindateInt)/1000/60/60/24; // difference of days
 
