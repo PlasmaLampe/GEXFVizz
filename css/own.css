@@ -15,12 +15,20 @@
 	.vspace{
 		width:1000px;
 		height:50px;
+        float:left;
 	}
     	
     body{
         background:hsl(0, 0%, 96%);
     }
     
+    div#slider{
+        float: left;
+    }
+    
+    div#perLink{
+        float: left;
+    }
 	/* ------------------------------ */
 	/* sigma.js context : */
 	/* source http://code.google.com/p/testprogramming/source/browse/trunk/javascript/canvas/sigma.js/gexf.html?spec=svn391&r=391 */
