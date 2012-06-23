@@ -1,3 +1,5 @@
+var show_node_as = "person"; //node, book or person
+
 var parser;
 
 function findBaseName(url) {

@@ -2546,13 +2546,37 @@ function Plotter(nodesCtx, edgesCtx, labelsCtx, hoverCtx, graph, w, h) {
 
     ctx.fillStyle = node['color'];
     ctx.beginPath();
-    ctx.arc(node['displayX'],
-            node['displayY'],
-            size,
-            0,
-            Math.PI * 2,
-            true);
 
+	switch(show_node_as){
+		case "book":
+			var img = new Image();    
+			img.src = 'img/book.png'; 
+
+			var newX = node['displayX'] - ((size*6)/2);
+			var newY = node['displayY'] - ((size*6)/2);
+			img.onload = function(){  
+				ctx.drawImage(img, newX, newY ,size*6,size*6);
+			};
+			break;
+		case "person":
+			var img = new Image();    
+			img.src = 'img/person.png'; 
+
+			var newX = node['displayX'] - ((size*6)/2);
+			var newY = node['displayY'] - ((size*6)/2);
+			img.onload = function(){  
+				ctx.drawImage(img, newX, newY ,size*6,size*6);
+			};
+			break;
+		case "node":
+			ctx.arc(node['displayX'],
+	            node['displayY'],
+	            size,
+	            0,
+	            Math.PI * 2,
+	            true);
+			break;	
+	}
     ctx.closePath();
     ctx.fill();
 
