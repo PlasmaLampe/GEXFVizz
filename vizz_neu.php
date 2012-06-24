@@ -40,6 +40,8 @@
 	<script src="zoom/jquery.zoomooz.min"></script>
 	<script src="js/demo.js"></script>
 	<script src="js/sigma.parseGexfPlus.js"></script>
+	<script src="js/bootstrap-tooltip.js"></script>
+	<script src="js/bootstrap-popover.js"></script>
 	
 	<!-- source of the slider: http://dhtmlx.com/docs/products/dhtmlxSlider/index.shtml -->	
 	<script  src="slider_codebase/dhtmlxcommon.js"></script>
@@ -173,7 +175,7 @@
 	<div class="vspace"></div>
 			<div class="row">
 	        <div id="dcBox" class="span4">
-	          	<h3><a id="zoomDC" href="#">Degree Centrality</a></h3>
+	          	<h3><a id="zoomDC" href="#">Degree Centrality</a> | <a href="#" id="dcHover" rel="tooltip" >(?)</a></h3>
 				<?php
 					if($_GET['url'] != null){
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=dc&rank=10"); 
@@ -184,7 +186,7 @@
 				?>
 	        </div>
 	        <div id="ccBox" class="span4">
-	          <h3><a id="zoomCC" href="#">Closeness Centrality</a></h3>
+	          <h3><a id="zoomCC" href="#">Closeness Centrality</a> | <a href="#" id="ccHover" rel="tooltip" >(?)</a></h3>
 				<?php
 					if($_GET['url'] != null){
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=cc&rank=10"); 
@@ -195,7 +197,7 @@
 				?>
 	       </div>
 	        <div id="bcBox" class="span4">
-				<h3><a id="zoomBC" href="#">Betweenness Centrality</a></h3>
+				<h3><a id="zoomBC" href="#">Betweenness Centrality</a> | <a href="#" id="bcHover" rel="tooltip" >(?)</a></h3>
 				<?php
 					if($_GET['url'] != null){
 						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=bc&rank=10"); 
