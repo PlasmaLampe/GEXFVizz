@@ -34,7 +34,7 @@
 		echo "your file has been downloaded, click <a href='vizz_neu?url=data/$conference.gexf'>here</a> to continue ...";
 		}elseif($_POST['chosenmetric'] == "co-citation"){
 		$remoteURL = "http://84.200.8.141:8080/GEXFServer/Servlet?eventid=$idConferenc&graphtype=cc&syear=$syear&eyear=$eyear";
-		
+		echo 'working at'.$remoteURL.'<br>';
 		$link = file_get_contents($remoteURL); 
 		echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
 		}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
