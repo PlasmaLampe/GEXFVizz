@@ -17,19 +17,27 @@
 <body>
 <?php
 $conference = $_POST['conference'];
+$result = mysql_query("SELECT id FROM event WHERE text='$conference'");
+$row = mysql_fetch_object($result);
+$idConferenc = $row->id;
+
 $syear = $_POST['syear'];
 $eyear = $_POST['eyear'];
 
-$result = mysql_query("SELECT id FROM event WHERE text='$conference'");
-$row = mysql_fetch_object($result);
-$realnameConferenc = $row->id;
-
-$remoteURL = "http://$USER:$PASSWORD@mlearn.aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventid=$realnameConferenc";
+if($_POST['chosenmetric'] == "co-authorship"){
+$remoteURL = "http://$USER:$PASSWORD@mlearn.aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventid=$idConferenc";
 
 // download file to server
 file_put_contents("data/$conference.gexf", file_get_contents($remoteURL));
 
 echo "your file has been downloaded, click <a href='vizz_neu?url=data/$conference.gexf'>here</a> to continue ...";
+}elseif($_POST['chosenmetric'] == "co-citation"){
+$remoteURL = "http://84.200.8.141:8080/GEXFServer/Servlet?eventid=$idConferenc&graphtype=cc"
+echo file_get_contents('<a href="'.$remoteURL.'">Your file has been downloaded</a>'); 
+
+}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
+echo "sorry, this is a todo feature ... :( ...";
+}
 ?>
 </body>
 </html>

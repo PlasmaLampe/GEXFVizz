@@ -101,10 +101,10 @@
 		          <div class="control-group">  
 		            <label class="control-label" for="select01">Select metric</label>  
 		            <div class="controls">  
-		              <select id="metric">  
+		              <select name="chosenmetric" id="metric">  		                
+				<option>co-authorship</option> 
 		                <option>co-citation</option>  
 		                <option>bibliographic coupling</option>  
-		                <option>co-authorship</option>   
 		              </select>  
 		            </div>  
 		          </div>
