@@ -33,9 +33,7 @@ file_put_contents("data/$conference.gexf", file_get_contents($remoteURL));
 echo "your file has been downloaded, click <a href='vizz_neu?url=data/$conference.gexf'>here</a> to continue ...";
 }elseif($_POST['chosenmetric'] == "co-citation"){
 $remoteURL = "http://84.200.8.141:8080/GEXFServer/Servlet?eventid=$idConferenc&graphtype=cc";
-$link = file_get_contents($remoteURL); 
-
-echo '<a href="'.$link.'">Your file has been downloaded</a>';
+echo file_get_contents($remoteURL); 
 
 }elseif($_POST['chosenmetric'] == "bibliographic coupling"){
 echo "sorry, this is a todo feature ... :( ...";
