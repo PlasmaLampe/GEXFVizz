@@ -4,13 +4,19 @@
 <html lang="en">
 <head>
 	<?php
+		include("include/db.php"); // .htaccess secured :)
+	?>
+
+	<?php
 		$conference = $_POST['conference'];
-		$result = mysql_query("SELECT id FROM event WHERE text='$conference'");
+		$result = mysql_query("SELECT id FROM event WHERE text=\"$conference\"");
 		$row = mysql_fetch_object($result);
 		$idConferenc = $row->id;
 
 		$syear = $_POST['syear'];
 		$eyear = $_POST['eyear'];
+
+		$ccremoteURL = "http://84.200.8.141:8080/GEXFServer/Servlet?eventid=$idConferenc&graphtype=cc&syear=$syear&eyear=$eyear";
 	?>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -20,31 +26,27 @@
 	
 	<!-- Date: 2012-06-21 -->
 	
-	<?php
-		include("include/db.php"); // .htaccess secured :)
-	?>
 
+	
+</head>
+<body>
 	<?php
-		if($_POST['chosenmetric'] == "co-authorship"){
+	if($_POST['chosenmetric'] == "co-authorship"){
 		$remoteURL = "http://$USER:$PASSWORD@mlearn.aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventid=$idConferenc";
 
 		// download file to server
 		file_put_contents("data/$conference.gexf", file_get_contents($remoteURL));
 
 		echo "your file has been downloaded, click <a href='vizz_neu?url=data/$conference.gexf'>here</a> to continue ...";
-		}elseif($_POST['chosenmetric'] == "co-citation"){
-		$remoteURL = "http://84.200.8.141:8080/GEXFServer/Servlet?eventid=$idConferenc&graphtype=cc&syear=$syear&eyear=$eyear";
-		echo 'working at'.$remoteURL.'<br>';
-		$link = file_get_contents($remoteURL); 
-		echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
-		}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
+	}elseif($_POST['chosenmetric'] == "co-citation"){					
+		echo '<a href="'.$ccremoteURL.'">next step</a><br>';
+		$link = file_get_contents($ccremoteURL); 
+		echo "get your stuff here: ".$link;		
+//echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
+	}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
 		echo "sorry, this is a todo feature ... :( ...";
-		}
+	}
 	?>
-	
-</head>
-<body>
-please wait ...
 
 </body>
 </html>
