@@ -71,7 +71,7 @@
 		              <input type="text" name="url" value="input your link to your gexf file" class="input-xlarge" id="urlinput">  
 		            </div>  
 		          </div>    
- 
+ 					<input type='hidden' name='type' value='node' />
 		          <div class="form-actions">  
 		            <button type="submit" id="submitButton" class="btn btn-primary">Upload and visualize</button>  
 		            <button class="btn">Reset</button>  
