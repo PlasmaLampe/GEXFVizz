@@ -86,7 +86,7 @@
 		//echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
 			}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
 				$link = file_get_contents($bcremoteURL); 
-				echo "your file has been generated, click <a href=\"".$link."type=book\">here</a> to open it";
+				echo "your file has been generated, click <a href=\"".$link."&type=book\">here</a> to open it";
 			}
 			?>
 		
