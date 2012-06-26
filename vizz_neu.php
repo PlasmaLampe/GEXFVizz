@@ -143,7 +143,6 @@
 				?>
 	       </div>
 	        <div id="perLink" class="span4">
-				<h3>Persistent link:</h3>
 					<?php
 						if($_GET['url'] != null){
 							$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
