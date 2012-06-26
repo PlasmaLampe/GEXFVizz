@@ -115,20 +115,6 @@
 				</div>
 			</div>
 			<div class="vspace"></div>
-			 
-			<div id="perLink">
-			<?php
-				if($_GET['url'] != null){
-					$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
-					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval; 
-				}else{
-					$hashlink = $_GET['id'];
-					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink; 
-				}
-			?>
-			</div>
-			
-			<div class="vspace"></div>
 			
 			<div class="row">
 	        <div id="timeBox" class="span4">
@@ -156,20 +142,17 @@
 					}
 				?>
 	       </div>
-	        <div id="otherFilesBox" class="span4">
-				<h3>Other files on this server:</h3>
-				<?php
-					if ($handle = opendir('data/')) {
-						echo "<table border='1'>\n\t<tr><th>File</th></tr>";
-					    while (false !== ($file = readdir($handle))) {
-							if ($file != "." && $file != "..") {
-					        	echo "<tr><td><a href='http://84.200.8.141/vizz_neu.php?url=data/$file'>$file</a></td></tr>\n";
-							}
-					    }
-					    closedir($handle);
-					}
-					echo "</table>";
-				?>
+	        <div id="perLink" class="span4">
+				<h3>Persistent link:</h3>
+					<?php
+						if($_GET['url'] != null){
+							$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
+							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval; 
+						}else{
+							$hashlink = $_GET['id'];
+							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink; 
+						}
+					?>
 	        </div>
 	      </div>
 	<div class="vspace"></div>
