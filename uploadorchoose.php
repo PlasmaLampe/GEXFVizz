@@ -71,11 +71,11 @@
 		        <fieldset>  
 		          <legend>Still, some configuration is needed</legend>  
 		          <div class="control-group">  
-		            <label class="control-label" for="select01">Select conference</label>  
+		            <label class="control-label" for="select0">Select conference series</label>  
 		            <div class="controls">  
-		              <select name="conference" id="select01">  
+		              <select name="conferenceseries" id="select0">  
 						<?php
-							$result = mysql_query("SELECT text FROM event");
+							$result = mysql_query("SELECT text FROM eventseries");
 							while($row = mysql_fetch_object($result)){
 						  		echo "<option>".$row->text."</option>";
 							}	
@@ -87,14 +87,14 @@
 		          <div class="control-group">  
 		            <label class="control-label" for="input01">Start year</label>  
 		            <div class="controls">  
-		              <input name="syear" type="text" value="You can leave this field empty"class="input-xlarge" id="startyear">  
+		              <input name="syear" type="text" value="2006"class="input-xlarge" id="startyear">  
 		            </div>  
 		          </div> 
 		 
 		          <div class="control-group">  
 		            <label class="control-label" for="input02">End year</label>  
 		            <div class="controls">  
-		              <input type="text" name="eyear" value="You can leave this field empty" class="input-xlarge" id="endyear">  
+		              <input name="eyear" type="text" value="2012" class="input-xlarge" id="endyear">  
 		            </div>  
 		          </div>
 		
@@ -102,7 +102,7 @@
 		            <label class="control-label" for="select01">Select metric</label>  
 		            <div class="controls">  
 		              <select name="chosenmetric" id="metric">  		                
-				<option>co-authorship</option> 
+						<option>co-authorship</option> 
 		                <option>co-citation</option>  
 		                <option>bibliographic coupling</option>  
 		              </select>  
@@ -113,7 +113,7 @@
 		            <label class="control-label" for="optionsCheckbox">Visualize with Sigma.js</label>  
 		            <div class="controls">  
 		              <label class="checkbox">  
-		                <input type="checkbox" id="sigma" value="option1">  
+		                <input type="checkbox" name="checkedSigma" id="sigma" value="option1">  
 		                Check this, if you want to get a whole graph
 		              </label>  
 		            </div>  
@@ -123,7 +123,7 @@
 		            <label class="control-label" for="optionsCheckbox">Visualize with Circos</label>  
 		            <div class="controls">  
 		              <label class="checkbox">  
-		                <input type="checkbox" id="circos" value="option1">  
+		                <input type="checkbox" name="checkedCircos" id="circos" value="option1">  
 		                Check this, if you want to get a circular layout
 		              </label>  
 		            </div>  
