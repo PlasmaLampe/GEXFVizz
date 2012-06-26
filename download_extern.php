@@ -80,11 +80,13 @@
 				file_put_contents("data/$conference%20$syear%20$eyear$.gexf", file_get_contents($remoteURL));
 
 				echo "your file has been downloaded, click <a href='vizz_neu?url=data/$conference%20$syear%20$eyear$.gexf'>here</a> to continue ...";
-			}elseif($_POST['chosenmetric'] == "co-citation"){					
+			}elseif($_POST['chosenmetric'] == "co-citation"){
+				echo $ccremoteURL."<br>";					
 				$link = file_get_contents($ccremoteURL); 
 				echo "your file has been generated, click <a href=\"".$link."\">here</a> to open it";		
 		//echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
 			}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
+				echo $ccremoteURL."<br>";
 				$link = file_get_contents($bcremoteURL); 
 				echo "your file has been generated, click <a href=\"".$link."\">here</a> to open it";
 			}
