@@ -74,12 +74,12 @@
 		<h2>Hold on! We are generating your file ...</h2>
 			<?php
 			if($_POST['chosenmetric'] == "co-authorship"){
-				$remoteURL = "http://$USER:$PASSWORD@mlearn.aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventseriesid=$idConferenc";
+				$remoteURL = "http://$USER:$PASSWORD@".strtolower($conference).".aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventseriesid=$idConferenc";
 
 				// download file to server
-				file_put_contents("data/$conference%20$syear%20$eyear$.gexf", file_get_contents($remoteURL));
+				file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL));
 
-				echo "your file has been downloaded, click <a href='vizz_neu?url=data/$conference%20$syear%20$eyear$.gexf'>here</a> to continue ...";
+				echo "your file has been downloaded, click <a href='vizz_neu?url=data/".$conference.$syear.$eyear.".gexf&type=person'>here</a> to continue ...";
 			}elseif($_POST['chosenmetric'] == "co-citation"){					
 				$link = file_get_contents($ccremoteURL); 
 				echo "your file has been generated, click <a href=\"".$link."&type=book\">here</a> to open it";		
