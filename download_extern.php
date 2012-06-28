@@ -79,14 +79,14 @@
 				// download file to server
 				file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL));
 
-				echo "your file has been downloaded, click <a href='vizz_neu?url=data/".$conference.$syear.$eyear.".gexf&type=person'>here</a> to continue ...";
+				echo "your file has been downloaded, click <a href='vizz_neu?url=data/".$conference.$syear.$eyear.".gexf&type=person&name=".$conference."%20from%20".$syear."%20to%20".$eyear."(".$_POST['chosenmetric'].")'>here</a> to continue ...";
 			}elseif($_POST['chosenmetric'] == "co-citation"){					
 				$link = file_get_contents($ccremoteURL); 
-				echo "your file has been generated, click <a href=\"".$link."&type=book\">here</a> to open it";		
+				echo "your file has been generated, click <a href=\"".$link."&type=book&name=".$conference."%20from%20".$syear."%20to%20".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";		
 		//echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
 			}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
 				$link = file_get_contents($bcremoteURL); 
-				echo "your file has been generated, click <a href=\"".$link."&type=book\">here</a> to open it";
+				echo "your file has been generated, click <a href=\"".$link."&type=book&name=".$conference."%20from%20".$syear."%20to%20".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";
 			}
 			?>
 		

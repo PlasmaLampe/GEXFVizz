@@ -9,6 +9,7 @@
 
 	<?php
 		// download file to server
+		$name = $_GET['name'];
 		if($_GET['url'] != null){
 			file_put_contents("data/".basename($_GET['url']), file_get_contents($_GET['url']));
 		}
@@ -87,6 +88,16 @@
 		
 		<div class='out'>
 			babab
+		</div>
+		
+		<div id="nameOfGraph">
+			<?php
+				if($name != null){
+					echo "<h4>you are looking at: ".$name."</h4>";
+				}else{
+					echo "<h4>you are looking at: ".basename($_GET['url']).".gexf</h4>";
+				}
+			?>
 		</div>
 		
 		<div class="buttons-container">
