@@ -132,6 +132,20 @@ function getQueryVariable(variable)
 
 var show_node_as = getQueryVariable('type'); //node, book or person
 
+function attributesToString(attr) {
+  return '<ul>' +
+    attr.map(function(o){
+      return '<li>' + o.attr + ' : ' + o.val + '</li>';
+    }).join('') +
+    '</ul>';
+}
+
+function attributesToSmallString(attr) {
+  return attr.map(function(o){
+      return o.attr + ':' + o.val;
+    }).join('#');
+}
+
 function init() {	
 	//load meta data
 	
@@ -152,14 +166,6 @@ function init() {
 	
   (function(){
     var popUp;
-
-    function attributesToString(attr) {
-      return '<ul>' +
-        attr.map(function(o){
-          return '<li>' + o.attr + ' : ' + o.val + '</li>';
-        }).join('') +
-        '</ul>';
-    }
 
     function showNodeInfo(event) {
       popUp && popUp.remove();
@@ -209,12 +215,13 @@ function init() {
 		currentDay = slider.getValue();
 		
 		// hide nodes
-		L = this.getNodesCount();
-		
-		this.iterNodes(function(n){
-		
+		this.iterNodes(function(n){	
 		var localstartDate 	= n['attr']['startDate']; 
 		var localendDate 	= n['attr']['endDate']; 
+
+		if(localendDate == null){
+			localendDate = maxdate;
+		}
 		
 		// how many days ?
 		var msecs = Date.parse(mindate);
@@ -233,6 +240,13 @@ function init() {
 			n.hidden = 1;
 		}
 		});
+		
+		// hide edges
+		this.iterEdges(function(e){
+			for(test in e['attr']['attributes']){
+			 alert(attributesToSmallString( e['attr']['attributes'] ));
+			}
+	  	});
 		return this.position(0,0,1).draw();
 	};
 

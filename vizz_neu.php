@@ -10,6 +10,7 @@
 	<?php
 		// download file to server
 		$name = $_GET['name'];
+		$type = $_GET['type'];
 		if($_GET['url'] != null){
 			file_put_contents("data/".basename($_GET['url']), file_get_contents($_GET['url']));
 		}
@@ -157,10 +158,10 @@
 					<?php
 						if($_GET['url'] != null){
 							$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
-							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval; 
+							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval."&name=".$name."&type=".$type; 
 						}else{
 							$hashlink = $_GET['id'];
-							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink; 
+							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink."&name=".$name."&type=".$type; 
 						}
 					?>
 	        </div>

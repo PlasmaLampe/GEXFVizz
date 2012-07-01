@@ -121,7 +121,7 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
 
       // *** *** ***
 	  // !! HACK
-		if(mindateInt == -1){ // first date
+		if(mindateInt == -1){ // first date, set it
 			mindate = start;
 			maxdate = end;
 			mindateInt = Date.parse(mindate);
@@ -143,9 +143,17 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
 			maxdate = end;
 			maxdateInt = Date.parse(end);
 		}
-
+		if(maxdateInt < Date.parse(start)){
+			maxdate = start;
+			maxdateInt = Date.parse(start);
+		}
+		
 		node.attributes.push({attr:'start', val:start});
-		node.attributes.push({attr:'end', val:end});
+		if(end != null){
+			node.attributes.push({attr:'end', val:end});
+		}else{
+			node.attributes.push({attr:'end', val:"max"});
+		}
 	  // 
       // *** *** ***
 
@@ -230,7 +238,11 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
 			maxdate = eend;
 			maxdateInt = Date.parse(eend);
 		}
-
+		if(maxdateInt < Date.parse(estart)){
+			maxdate = estart;
+			maxdateInt = Date.parse(estart);
+		}
+		
 		edge.attributes.push({attr:'start', val:estart});
 		edge.attributes.push({attr:'end', val:eend});
 	  // 
@@ -248,12 +260,35 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
         var attr = attvalueNode.getAttribute('for');
         var val = attvalueNode.getAttribute('value');
 
+       	var edgeStart;
+		var edgeEnd;
+
+		if(attvalueNode.getAttribute('start') != null){
+			edgeStart = attvalueNode.getAttribute('start');
+		}else{
+			edgeStart = 0;
+		} 
+		
+		if(attvalueNode.getAttribute('end') != null){
+			edgeEnd = attvalueNode.getAttribute('end');
+		}else{
+			edgeEnd = 0;
+		}
+		
+		var attrWithStartAndEnd = attr + "#" + edgeStart + "#" + edgeEnd;
+		
 		/* mini hack to save the weight out of attvalues*/
 		if(attr=='weight'){
 			edge['weight'] = val;
 		}
 		/* -----------*/
-        edge.attributes.push({attr:attr, val:val});
+		
+		if(edgeStart == 0 && edgeEnd == 0){
+			edge.attributes.push({attr:attr, val:val});
+		}else{
+			edge.attributes.push({attr:attrWithStartAndEnd, val:val});
+		}
+        
       }
 
       sigmaInstance.addEdge(edgeId++,source,target,edge);
