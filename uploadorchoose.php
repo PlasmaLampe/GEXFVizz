@@ -122,8 +122,8 @@
 		          <div class="control-group">  
 		            <label class="control-label" for="optionsCheckbox">Visualize with Circos</label>  
 		            <div class="controls">  
-		              <label class="checkbox">  
-		                <input type="checkbox" name="checkedCircos" id="circos" value="option1">  
+		              <label class="checkbox" value="false">  
+		                <input type="checkbox" name="checkedCircos" id="circos" value="true">  
 		                Check this, if you want to get a circular layout
 		              </label>  
 		            </div>  
