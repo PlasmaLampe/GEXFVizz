@@ -11,7 +11,11 @@
 		$row = mysql_fetch_object($result);
 		$idConferenc = $row->id;
 		$checkedCircos = $_POST['checkedCircos'];
+		$checkedSigma = $_POST['checkedSigma'];
 		
+		if($checkedSigma != "true"){
+			$checkedSigma = "false";
+		}
 		if($checkedCircos != "true"){
 			$checkedCircos = "false";
 		}
@@ -83,14 +87,14 @@
 				// download file to server
 				file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL));
 
-				echo "your file has been downloaded, click <a href='vizz_neu?url=data/".$conference.$syear.$eyear.".gexf&type=person&circos=".$checkedCircos."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")'>here</a> to continue ...";
+				echo "your file has been downloaded, click <a href='vizz_neu?url=data/".$conference.$syear.$eyear.".gexf&type=person&sigma=".$checkedSigma."&circos=".$checkedCircos."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")'>here</a> to continue ...";
 			}elseif($_POST['chosenmetric'] == "co-citation"){					
 				$link = file_get_contents($ccremoteURL); 
-				echo "your file has been generated, click <a href=\"".$link."&type=book&circos=".$checkedCircos."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";		
+				echo "your file has been generated, click <a href=\"".$link."&type=book&sigma=".$checkedSigma."&circos=".$checkedCircos."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";		
 		//echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
 			}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
 				$link = file_get_contents($bcremoteURL); 
-				echo "your file has been generated, click <a href=\"".$link."&type=book&circos=".$checkedCircos."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";
+				echo "your file has been generated, click <a href=\"".$link."&type=book&sigma=".$checkedSigma."&circos=".$checkedCircos."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";
 			}
 			?>
 		
