@@ -11,6 +11,10 @@
 		$row = mysql_fetch_object($result);
 		$idConferenc = $row->id;
 		$checkedCircos = $_POST['checkedCircos'];
+		
+		if($checkedCircos != "true"){
+			$checkedCircos = "false";
+		}
 		$syear = $_POST['syear'];
 		$eyear = $_POST['eyear'];
 
