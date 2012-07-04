@@ -113,7 +113,7 @@
 		            <label class="control-label" for="optionsCheckbox">Visualize with Sigma.js</label>  
 		            <div class="controls">  
 		              <label class="checkbox">  
-		                <input type="checkbox" name="checkedSigma" id="sigma" value="option1">  
+		                <input type="checkbox" name="checkedSigma" id="sigma" value="true" checked>  
 		                Check this, if you want to get a whole graph
 		              </label>  
 		            </div>  
