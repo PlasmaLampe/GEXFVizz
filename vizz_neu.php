@@ -93,7 +93,8 @@
 		  <li class="active">
 		    <a href="uploadorchoose.php">... show me the Sigma.js visualization</a>
 		  </li>
-		 <?php echo "<li><a href=\"circos.php?url=data/".basename($_GET['url'].">... show me the Circos visualization</a></li>";
+		 <?php 
+		echo "<li><a href=\"circos.php?url=data/".basename($_GET['url'])."\">... show me the Circos visualization</a></li>";
 			?>
 		</ul>
 		

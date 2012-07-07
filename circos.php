@@ -46,7 +46,7 @@
 		    <a href="index.php">Home</a> <span class="divider">/</span>
 		  </li>
 		  <li>
-		    Upload or choose
+		    <a href="uploadorchoose.php">Upload or choose</a>
 		  </li><span class="divider">/</span>
 		  </li>
 		  <li class="active">
