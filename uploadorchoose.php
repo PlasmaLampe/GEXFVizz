@@ -109,26 +109,6 @@
 		            </div>  
 		          </div>
 		
-		          <div class="control-group">  
-		            <label class="control-label" for="optionsCheckbox">Visualize with Sigma.js</label>  
-		            <div class="controls">  
-		              <label class="checkbox">  
-		                <input type="checkbox" name="checkedSigma" id="sigma" value="true" checked>  
-		                Check this, if you want to get a whole graph
-		              </label>  
-		            </div>  
-		          </div>  
- 
-		          <div class="control-group">  
-		            <label class="control-label" for="optionsCheckbox">Visualize with Circos</label>  
-		            <div class="controls">  
-		              <label class="checkbox">  
-		                <input type="checkbox" name="checkedCircos" id="circos" value="true">  
-		                Check this, if you want to get a circular layout
-		              </label>  
-		            </div>  
-		          </div>
-		
 		          <div class="form-actions">  
 		            <button type="submit" class="btn btn-primary">Let's go</button>  
 		            <button class="btn">Reset</button>  

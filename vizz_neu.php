@@ -87,6 +87,18 @@
 		  <li class="active">Visualization</li>
 		</ul>
 		
+		<h2>Hold on, again! Sigma.js or Circos ?</h2>
+		Now, you can see a visualization with Sigma.js or with Circos ...
+		<ul class="nav nav-pills">
+		  <li class="active">
+		    <a href="uploadorchoose.php">... show me the Sigma.js visualization</a>
+		  </li>
+		 <?php echo "<li><a href=\"circos.php?url=data/".basename($_GET['url'].">... show me the Circos visualization</a></li>";
+			?>
+		</ul>
+		
+		<hr>
+		
 		<div class='out'>
 			babab
 		</div>
