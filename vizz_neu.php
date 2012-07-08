@@ -99,7 +99,7 @@
 		}else{
 			$hashlink = $_GET['id'];
 			
-			echo "<li><a href=\"circos.php?url=hash/".$hashlink."\">... show me the Circos visualization</a></li>";
+			echo "<li><a href=\"circos.php?url=hash/".$hashlink.".gexf\">... show me the Circos visualization</a></li>";
 		}
 			?>
 		</ul>
