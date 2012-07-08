@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+	<?php
+		$url = $_GET['url'];
+	?>
     <meta charset="utf-8">
     <title>GEXF Vizz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +57,12 @@
 		  </li>
 		</ul>
 		
-
+		<?php
+		$cc_pic = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url=".$_GET['url']."&metric=cc&circos=true"); 
+		echo "<h3> Closeness centrality </h3>";
+		echo "<p><img src=\"".$cc_pic."\" width=\"700\" height=\"700\"></p>";
+		?>
+		
 		
     </div> <!-- /container -->
   </body>
