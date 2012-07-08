@@ -58,7 +58,7 @@
 		</ul>
 		
 		<?php
-		$cc_pic = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url=".$_GET['url']."&metric=cc&circos=true"); 
+		$cc_pic = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url=".$_GET['url']."&metric=cc&rank=20&circos=true"); 
 		echo "<h3> Closeness centrality </h3>";
 		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$cc_pic."\" width=\"700\" height=\"700\"></a></p>";
 		?>
