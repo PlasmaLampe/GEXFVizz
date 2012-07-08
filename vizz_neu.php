@@ -94,7 +94,13 @@
 		    <a href="uploadorchoose.php">... show me the Sigma.js visualization</a>
 		  </li>
 		 <?php 
-		echo "<li><a href=\"circos.php?url=data/".basename($_GET['url'])."\">... show me the Circos visualization</a></li>";
+		if($_GET['url'] != null){
+			echo "<li><a href=\"circos.php?url=data/".basename($_GET['url'])."\">... show me the Circos visualization</a></li>";
+		}else{
+			$hashlink = $_GET['id'];
+			
+			echo "<li><a href=\"circos.php?url=hash/".$hashlink."\">... show me the Circos visualization</a></li>";
+		}
 			?>
 		</ul>
 		
