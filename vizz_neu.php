@@ -28,9 +28,7 @@
 	<!-- some libs and other needed stuff -->
 	<link rel="stylesheet" href="css/own.css">
 	<script type="text/javascript">
-		var mindateInt;
-		var mindate;
-		var maxdateInt;
+		var mindate = -1;
 		var maxdate;
 		var demo = -1;
 		var slider;

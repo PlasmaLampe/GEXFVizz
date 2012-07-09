@@ -146,6 +146,17 @@ function attributesToSmallString(attr) {
     }).join('#');
 }
 
+function getWeightInYears(attr, from, to){
+	return attr.map(function(o){
+		var targetString = "weight#"+from+"#"+to;
+		if(o.attr == targetString){
+			return o.val;
+		}else{
+			return "";
+		}
+    }).join('');
+}
+
 function init() {	
 	//load meta data
 	
@@ -223,33 +234,42 @@ function init() {
 			localendDate = maxdate;
 		}
 		
-		// how many days ?
-		var msecs = Date.parse(mindate);
-		var msecs2 = Date.parse(maxdate);
-		var diff = msecs2 - msecs;
-		var alldays = (((diff / 1000) / 60) / 60) / 24;
-		
+		// how many years ?
+		var alldays = maxdate - mindate;
+
 		// calc diff time
-		var relLocalMin = ((((Date.parse(localstartDate) - Date.parse(mindate)) / 1000) / 60) / 60) / 24;
-		var relLocalMax = ((((Date.parse(maxdate) - Date.parse(localendDate)) / 1000) / 60) / 60) / 24;
-			
+		var relLocalMin = localstartDate - mindate;
+		var relLocalMax = maxdate - localendDate;
+
 		// find hidden nodes
 		if(currentDay <= (alldays - relLocalMax) && currentDay >= relLocalMin){
 			n.hidden = 0;
+			
 		}else{
 			n.hidden = 1;
 		}
 		});
 		
+		var starthere = parseInt(currentDay) + parseInt(mindate);
+		var stophere = starthere + 1;
+		
 		// hide edges
 		this.iterEdges(function(e){
-			for(test in e['attr']['attributes']){
-			 alert(attributesToSmallString( e['attr']['attributes'] ));
+			var curWeight = getWeightInYears(e['attr']['attributes'],starthere, stophere);
+
+			//alert(getWeightInYears(e['attr']['attributes'],currentDay+mindate,currentDay+mindate+1));
+			if(curWeight == ""){
+				//alert("123");
+				e.hidden = 1;
+			}else{
+				e.weight = curWeight;
+				e.hidden = 0;
 			}
 	  	});
 		return this.position(0,0,1).draw();
 	};
 
+	// bind the methods to buttons
 	document.getElementById('randomlayout').addEventListener('click',function(){
 		sigInst.myRandomLayout();
 	},true);	
@@ -260,34 +280,16 @@ function init() {
 		sigInst.myFRLayout();
 	},true);
 	
-	// bind the methods to buttons
-	var diffdays = (maxdateInt - mindateInt)/1000/60/60/24; // difference of days
-
-	if(diffdays > 365){
-		// the graph contains probably years
-		document.getElementById('PlayAnimation').addEventListener('click',function(){
-			currentDay = slider.getValue();
-			setInterval(function(){sigInst.HideWrongTimeNodes(+1)},300);
-		},true);
-		document.getElementById('Day-').addEventListener('click',function(){
-		sigInst.HideWrongTimeNodes(-356);
-		},true);
-		document.getElementById('Day+').addEventListener('click',function(){
-		sigInst.HideWrongTimeNodes(+356);
-		},true);
-	}else{
-		// the graph contains probably days
-		document.getElementById('PlayAnimation').addEventListener('click',function(){
-			currentDay = slider.getValue();
-			setInterval(function(){sigInst.HideWrongTimeNodes(+1)},500);
-		},true);
-		document.getElementById('Day-').addEventListener('click',function(){
-		sigInst.HideWrongTimeNodes(-1);
-		},true);
-		document.getElementById('Day+').addEventListener('click',function(){
-		sigInst.HideWrongTimeNodes(+1);
-		},true);
-	}
+	document.getElementById('PlayAnimation').addEventListener('click',function(){
+		currentDay = slider.getValue();
+		setInterval(function(){sigInst.HideWrongTimeNodes(+1)},500);
+	},true);
+	document.getElementById('Day-').addEventListener('click',function(){
+	sigInst.HideWrongTimeNodes(-1);
+	},true);
+	document.getElementById('Day+').addEventListener('click',function(){
+	sigInst.HideWrongTimeNodes(+1);
+	},true);	
 }
 
 // play the animation

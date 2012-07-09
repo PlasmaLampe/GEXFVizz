@@ -4,8 +4,6 @@ var typeOfGraph="";
 	
 sigma.publicPrototype.parseGexf = function(gexfPath) {	
   // Load XML file:
-	mindateInt = -1;
-
   var gexfhttp, gexf;
   var sigmaInstance = this;
   gexfhttp = window.XMLHttpRequest ?
@@ -121,31 +119,24 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
 
       // *** *** ***
 	  // !! HACK
-		if(mindateInt == -1){ // first date, set it
+		if(mindate == -1){ // first date, set it
 			mindate = start;
 			maxdate = end;
-			mindateInt = Date.parse(mindate);
-
 			if(typeof(maxdate) !== 'undefined' && maxdate != null){
-				maxdateInt = Date.parse(maxdate);
+				// fine ...
 			}else{
 				maxdate = start;
-				maxdateInt = Date.parse(mindate);
 			}
 		} // now, check
 		
-		if(mindateInt > Date.parse(start)){
+		if(mindate > start && start != null){
 			mindate = start;
-			mindateInt = Date.parse(start);
-		
 		}
-		if(maxdateInt < Date.parse(end)){
+		if(maxdate < end){
 			maxdate = end;
-			maxdateInt = Date.parse(end);
 		}
-		if(maxdateInt < Date.parse(start)){
+		if(maxdate < start){
 			maxdate = start;
-			maxdateInt = Date.parse(start);
 		}
 		
 		node.attributes.push({attr:'start', val:start});
@@ -172,19 +163,16 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
   }
 	// *** *** ***
 	// HACK 2
-	var msecs = Date.parse(mindate);
-	var msecs2 = Date.parse(maxdate);
-	var diff = msecs2 - msecs;
-	var day = (((diff / 1000) / 60) / 60) / 24;
+	var year = maxdate - mindate;
 	
 	if(typeof(mindate) !== 'undefined' && mindate != null){
-		$('div.out').html("<h3>This graph contains " + day + " time units</h3><br>");
+		$('div.out').html("<h3>This graph contains " + year + " time units</h3><br>");
 		
 		window.dhx_globalImgPath = "slider_codebase/imgs/";
 		slider = new dhtmlxSlider("sliderBox", 700);
 		slider.setImagePath("slider_codebase/imgs/");
 		slider.setSkin('dhx_skyblue');	
-		slider.setMax(day);
+		slider.setMax(year);
 		slider.init();
 		$('div.from').html("view starts at " + mindate);
 		$('div.to').html("and finishes at " + maxdate);
@@ -221,26 +209,19 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
 
       // *** *** ***
 	  // !! HACK
-		if(mindateInt == -1){ // first date
+		if(mindate == -1){ // first date
 			mindate = estart;
 			maxdate = eend;
-			mindateInt = Date.parse(mindate);
-			maxdateInt = Date.parse(maxdate);
-			
 		} // now, check
 		
-		if(mindateInt > Date.parse(estart)){
+		if(mindate > estart && estart != null){
 			mindate = estart;
-			mindateInt = Date.parse(estart);
-		
 		}
-		if(maxdateInt < Date.parse(eend) || maxdate == null){
+		if(maxdate < eend || maxdate == null){
 			maxdate = eend;
-			maxdateInt = Date.parse(eend);
 		}
-		if(maxdateInt < Date.parse(estart)){
+		if(maxdate < estart){
 			maxdate = estart;
-			maxdateInt = Date.parse(estart);
 		}
 		
 		edge.attributes.push({attr:'start', val:estart});
