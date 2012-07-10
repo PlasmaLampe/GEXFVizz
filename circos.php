@@ -59,8 +59,9 @@
 		
 		<?php
 		$cc_pic = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url=".$_GET['url']."&metric=cc&rank=20&circos=true"); 
+		$small_cc_pic = preg_replace("/\\.[^.\\s]{3,4}$/", "", $cc_pic)."_small.png";
 		echo "<h3> Closeness centrality </h3>";
-		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$cc_pic."\" width=\"700\" height=\"700\"></a></p>";
+		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$small_cc_pic."\" width=\"500\" height=\"500\"></a></p>";
 		?>
 		
 		
