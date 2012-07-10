@@ -158,8 +158,6 @@ function getWeightInYears(attr, from, to){
 }
 
 function init() {	
-	//load meta data
-	
 	//load graph
   var sigInst = sigma.init($('#sigma-example')[0]).drawingProperties({
     defaultLabelColor: '#fff'
@@ -175,6 +173,7 @@ function init() {
 		parser = sigInst.parseGexf(file);
 	}
 	
+	/*
   (function(){
     var popUp;
 
@@ -217,7 +216,7 @@ function init() {
 
     sigInst.bind('overnodes',showNodeInfo).bind('outnodes',hideNodeInfo).draw();
   })();
-
+	*/
 	// hide nodes which should not show up at this time
 	sigma.publicPrototype.HideWrongTimeNodes = function(value) {
 		// update slider
@@ -257,13 +256,12 @@ function init() {
 		this.iterEdges(function(e){
 			var curWeight = getWeightInYears(e['attr']['attributes'],starthere, stophere);
 
-			//alert(getWeightInYears(e['attr']['attributes'],currentDay+mindate,currentDay+mindate+1));
 			if(curWeight == ""){
-				//alert("123");
-				e.hidden = 1;
+				//e.hidden = 1;
+				e.weight = 1; // set weight to 1 as default
 			}else{
 				e.weight = curWeight;
-				e.hidden = 0;
+				//e.hidden = 0;
 			}
 	  	});
 		return this.position(0,0,1).draw();
@@ -295,7 +293,11 @@ function init() {
 // play the animation
 function playAnimation(){
 	currentDay = slider.getValue();
-	setInterval(function(){sigInst.HideWrongTimeNodes(+1)},1000);
+	if(currentDay < slider.getMax()){
+		setInterval(function(){sigInst.HideWrongTimeNodes(+1)},1000);
+	}else{
+		slider.setValue(0);
+	}
 }
 
 if (document.addEventListener) {
