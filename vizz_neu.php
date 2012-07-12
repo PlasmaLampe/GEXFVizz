@@ -147,7 +147,7 @@
 				</div>
 			</div>
 			<div class="vspace"></div>
-			
+			<div id="perLink">
 			<?php
 				if($_GET['url'] != null){
 					$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
@@ -157,7 +157,7 @@
 					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink."&name=".$name."&type=".$type; 
 				}
 			?>
-			
+			</div>
 			<div class="row">
 	        <div id="timeBox" class="span4">
 			<h3>Time information:</h3>
@@ -188,7 +188,7 @@
 				<?php
 				if($bcedges == "true"){
 					$bcurl = "http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10&bcedges=true";
-					echo $bcurl;
+					echo "<h3> Edges </h3>";
 					echo file_get_contents($bcurl); 
 				}
 				?>
