@@ -187,12 +187,8 @@
 	        <div id="bc" class="span4">
 				<?php
 				if($bcedges == "true"){
-					if($_GET['url'] != null){
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10"); 
-					}else{
-						$hashlink = $_GET['id'];
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10"); 
-					}
+					echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10"); 
+				
 				}
 				?>
 	        </div>
