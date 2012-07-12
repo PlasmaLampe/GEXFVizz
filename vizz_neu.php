@@ -187,7 +187,7 @@
 	        <div id="bc" class="span4">
 				<?php
 				if($bcedges == "true"){
-					$bcurl = "http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10";
+					$bcurl = "http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10&bcedges=true";
 					echo $bcurl;
 					echo file_get_contents($bcurl); 
 				}
