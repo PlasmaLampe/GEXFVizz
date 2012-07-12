@@ -112,9 +112,13 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
                                          parseFloat(colorNode.getAttribute('g')),
                                          parseFloat(colorNode.getAttribute('b')));
       }
-      
-      // Create Node
-      var node = {label:label, size:size, x:x, y:y, attributes:[], color:color, startDate:start, endDate:end};  // The graph node
+
+	// Create Node
+		var node;
+      if(color !== 'undefined')
+		node = {label:label, size:size, x:x, y:y, attributes:[], color:"rgb(100,150,100)", startDate:start, endDate:end};  // The graph node
+	  else
+        node = {label:label, size:size, x:x, y:y, attributes:[], color:color, startDate:start, endDate:end};  // The graph node
       
 
       // *** *** ***

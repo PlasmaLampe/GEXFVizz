@@ -130,8 +130,6 @@ function getQueryVariable(variable)
 }
 /* --------------------------- */
 
-var show_node_as = getQueryVariable('type'); //node, book or person
-
 function attributesToString(attr) {
   return '<ul>' +
     attr.map(function(o){
@@ -160,7 +158,9 @@ function getWeightInYears(attr, from, to){
 function init() {	
 	//load graph
   var sigInst = sigma.init($('#sigma-example')[0]).drawingProperties({
-    defaultLabelColor: '#fff'
+    defaultLabelColor: '#fff',
+	defaultLabelBGColor: '#fff',
+	defaultLabelHoverColor: '#000'
   }).graphProperties({
     minNodeSize: 0.5,
     maxNodeSize: 5
@@ -173,6 +173,28 @@ function init() {
 		parser = sigInst.parseGexf(file);
 	}
 	
+	sigInst.bind('overnodes',function(event){
+    var nodes = event.content;
+    var neighbors = {};
+    sigInst.iterEdges(function(e){
+      if(nodes.indexOf(e.source)>=0 || nodes.indexOf(e.target)>=0){
+        neighbors[e.source] = 1;
+        neighbors[e.target] = 1;
+      }
+    }).iterNodes(function(n){
+      if(!neighbors[n.id]){
+        n.hidden = 1;
+      }else{
+        n.hidden = 0;
+      }
+    }).draw(2,2,2);
+  }).bind('outnodes',function(){
+    sigInst.iterEdges(function(e){
+      e.hidden = 0;
+    }).iterNodes(function(n){
+      n.hidden = 0;
+    }).draw(2,2,2);
+  });
 	/*
   (function(){
     var popUp;
