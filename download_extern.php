@@ -86,7 +86,7 @@
 		//echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
 			}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
 				$link = file_get_contents($bcremoteURL); 
-				echo "your file has been generated, click <a href=\"".$link."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";
+				echo "your file has been generated, click <a href=\"".$link."eventseriesid=".$idConferenc."&syear=".$syear."&eyear=".$eyear."&bcedges=true&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";
 			}
 			?>
 		

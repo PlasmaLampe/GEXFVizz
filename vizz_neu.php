@@ -10,7 +10,7 @@
 	<?php
 		// download file to server
 		$name = $_GET['name'];
-		$type = $_GET['type'];
+		$bcedges = $_GET['bcedges'];
 		if($_GET['url'] != null){
 			file_put_contents("data/".basename($_GET['url']), file_get_contents($_GET['url']));
 		}
