@@ -10,6 +10,9 @@
 	<?php
 		// download file to server
 		$name = $_GET['name'];
+		$eventseriesid =  $_GET['eventseriesid'];
+		$syear =  $_GET['syear'];
+		$eyear =  $_GET['eyear'];
 		$bcedges = $_GET['bcedges'];
 		if($_GET['url'] != null){
 			file_put_contents("data/".basename($_GET['url']), file_get_contents($_GET['url']));
@@ -145,6 +148,16 @@
 			</div>
 			<div class="vspace"></div>
 			
+			<?php
+				if($_GET['url'] != null){
+					$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
+					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval."&name=".$name."&type=".$type; 
+				}else{
+					$hashlink = $_GET['id'];
+					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink."&name=".$name."&type=".$type; 
+				}
+			?>
+			
 			<div class="row">
 	        <div id="timeBox" class="span4">
 			<h3>Time information:</h3>
@@ -171,16 +184,17 @@
 					}
 				?>
 	       </div>
-	        <div id="perLink" class="span4">
-					<?php
-						if($_GET['url'] != null){
-							$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
-							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval."&name=".$name."&type=".$type; 
-						}else{
-							$hashlink = $_GET['id'];
-							echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink."&name=".$name."&type=".$type; 
-						}
-					?>
+	        <div id="bc" class="span4">
+				<?php
+				if($bcedges == "true"){
+					if($_GET['url'] != null){
+						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10"); 
+					}else{
+						$hashlink = $_GET['id'];
+						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10"); 
+					}
+				}
+				?>
 	        </div>
 	      </div>
 	<div class="vspace"></div>
