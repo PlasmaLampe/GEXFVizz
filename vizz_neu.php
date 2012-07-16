@@ -38,10 +38,15 @@
 		var currentDay = 0;
 	</script>	
 	
-	<script src="js/sigma.concat.js"></script>
 	<script src="js/jquery.min.js"></script>
+	<script src="js/sigma.concat.js"></script>
 	<script src="zoom/jquery.zoomooz.min"></script>
-	<script src="js/demo.js"></script>
+	<script src="js/hover_and_zoom.js"></script>
+	<script src="js/vector2.js"></script>
+	<script src="js/sigma.fr.js"></script>
+	<script src="js/sigma.circ.js"></script>
+	<script src="js/sigma.random.js"></script>
+	<script src="js/sigma_own.js"></script>
 	<script src="js/sigma.parseGexfPlus.js"></script>
 	<script src="js/bootstrap-tooltip.js"></script>
 	<script src="js/bootstrap-popover.js"></script>
@@ -189,7 +194,7 @@
 				<?php
 				if($bcedges == "true"){
 					$bcurl = "http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10&bcedges=true";
-					echo "<h3> Edges </h3>";
+					echo "<h3> Edges: </h3>";
 					echo file_get_contents($bcurl); 
 				}
 				?>
