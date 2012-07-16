@@ -216,15 +216,26 @@ function init() {
 		sigInst.myFRLayout(100,sigInst._core);
 	},true);
 	
+	function updateButtonLabel(id,newvalue){
+		if(slider.getValue() != 0 && newvalue != -1){
+			var finalvalue = "show "+slider.getValue()+mindate + newvalue;
+			document.getElementById(id).value=finalvalue;
+		}else{
+			document.getElementById(id).value="N/A";
+		}	
+	}
+	
 	document.getElementById('PlayAnimation').addEventListener('click',function(){
 		currentDay = slider.getValue();
 		setInterval(function(){sigInst.HideWrongTimeNodes(+1)},500);
 	},true);
 	document.getElementById('Day-').addEventListener('click',function(){
-	sigInst.HideWrongTimeNodes(-1);
+		updateButtonLabel("Day-",-1);
+		sigInst.HideWrongTimeNodes(-1);
 	},true);
 	document.getElementById('Day+').addEventListener('click',function(){
-	sigInst.HideWrongTimeNodes(+1);
+		updateButtonLabel("Day+",+1);
+		sigInst.HideWrongTimeNodes(+1);
 	},true);	
 }
 
