@@ -157,12 +157,17 @@
 			<div class="vspace"></div>
 			<div id="perLink">
 			<?php
+				$bcPOSTFIX = "";
+				if($_GET['bcedges'] != null){ // add some vars, because we have a bibliographic coupling graph here
+					$bcPOSTFIX = "&syear=".$syear."&eyear=".$eyear."&bcedges=true";
+				}
+				$linktext = "<h3>use this link to share this page with your partners and friends:</h3>";
 				if($_GET['url'] != null){
 					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
-					echo "<h3>use this link to share this page with your partners and friends:</h3> ".$WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name; 
+					echo $linktext.$WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
 				}else{
 					$hashlink = $_GET['id'];
-					echo "<h3>use this link to share this page with your partners and friends:</h3> ".$WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name; 
+					echo $linktext.$WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX; 
 				}
 			?>
 			</div>
