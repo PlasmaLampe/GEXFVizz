@@ -14,8 +14,10 @@
 		$syear = $_POST['syear'];
 		$eyear = $_POST['eyear'];
 
-		$ccremoteURL = "http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=$idConferenc&graphtype=cc&syear=$syear&eyear=$eyear";
-		$bcremoteURL = "http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=$idConferenc&graphtype=bc&syear=$syear&eyear=$eyear";
+		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
+		
+		$ccremoteURL = $ServletPREFIX."eventseriesid=$idConferenc&graphtype=cc&syear=$syear&eyear=$eyear";
+		$bcremoteURL = $ServletPREFIX."eventseriesid=$idConferenc&graphtype=bc&syear=$syear&eyear=$eyear";
 	?>
 	
     <meta charset="utf-8">
