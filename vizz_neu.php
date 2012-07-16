@@ -17,6 +17,9 @@
 		if($_GET['url'] != null){
 			file_put_contents("data/".basename($_GET['url']), file_get_contents($_GET['url']));
 		}
+		
+		$ServletPREFIX = "http://131.234.31.148/:8080/GEXFServer/Servlet?";
+		$WebPREFIX = "http://131.234.31.148/";
 	?>
 	
     <!-- Le styles -->
@@ -155,11 +158,11 @@
 			<div id="perLink">
 			<?php
 				if($_GET['url'] != null){
-					$hashval = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getsha=1"));
-					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashval."&name=".$name; 
+					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
+					echo "<h3>use this link to share this page with your partners and friends:</h3> ".$WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name; 
 				}else{
 					$hashlink = $_GET['id'];
-					echo "<h3>use this link to share this page with your partners and friends:</h3> http://84.200.8.141/vizz_neu.php?id=".$hashlink."&name=".$name; 
+					echo "<h3>use this link to share this page with your partners and friends:</h3> ".$WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name; 
 				}
 			?>
 			</div>
@@ -174,16 +177,16 @@
 			<h3>Graph information:</h3>				
 				<?php
 					if($_GET['url'] != null){
-						$nae = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getnodesandedges=1"));
-						$dens = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url']."&getdensity=1"));
+						$nae = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getnodesandedges=1"));
+						$dens = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getdensity=1"));
 						list ($nodes, $edges) = split('#', $nae);
 						$roundDens = round($dens, 2);
 						echo "The graph contains $nodes nodes and $edges edges<br>The graph density is $roundDens";
 					}else{
 						$hashlink = $_GET['id'];
 						
-						$nae = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&getnodesandedges=1");
-						$dens = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&getdensity=1");
+						$nae = file_get_contents($ServletPREFIX."id=".$hashlink."&getnodesandedges=1");
+						$dens = file_get_contents($ServletPREFIX."id=".$hashlink."&getdensity=1");
 						list ($nodes, $edges) = split('#', $nae);
 						$roundDens = round($dens, 2);
 						echo "The graph contains $nodes nodes and $edges edges<br>The graph density is $roundDens";
@@ -193,7 +196,7 @@
 	        <div id="bc" class="span4">
 				<?php
 				if($bcedges == "true"){
-					$bcurl = "http://84.200.8.141:8080/GEXFServer/Servlet?eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10&bcedges=true";
+					$bcurl = $ServletPREFIX."eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10&bcedges=true";
 					echo "<h3> Edges: </h3>";
 					echo file_get_contents($bcurl); 
 				}
@@ -206,10 +209,10 @@
 	          	<h3><a id="zoomDC" href="#">Degree Centrality</a> | <a href="#" id="dcHover" rel="tooltip" >(?)</a></h3>
 				<?php
 					if($_GET['url'] != null){
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=dc&rank=10"); 
+						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=dc&rank=10"); 
 					}else{
 						$hashlink = $_GET['id'];
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&metric=dc&rank=10"); 
+						echo file_get_contents($ServletPREFIX."id=".$hashlink."&metric=dc&rank=10"); 
 					}
 				?>
 	        </div>
@@ -217,10 +220,10 @@
 	          <h3><a id="zoomCC" href="#">Closeness Centrality</a> | <a href="#" id="ccHover" rel="tooltip" >(?)</a></h3>
 				<?php
 					if($_GET['url'] != null){
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=cc&rank=10"); 
+						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=cc&rank=10"); 
 					}else{
 						$hashlink = $_GET['id'];
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&metric=cc&rank=10"); 
+						echo file_get_contents($ServletPREFIX."id=".$hashlink."&metric=cc&rank=10"); 
 					}
 				?>
 	       </div>
@@ -228,10 +231,10 @@
 				<h3><a id="zoomBC" href="#">Betweenness Centrality</a> | <a href="#" id="bcHover" rel="tooltip" >(?)</a></h3>
 				<?php
 					if($_GET['url'] != null){
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url="."data/".basename($_GET['url'])."&metric=bc&rank=10"); 
+						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=bc&rank=10"); 
 					}else{
 						$hashlink = $_GET['id'];
-						echo file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?id=".$hashlink."&metric=bc&rank=10"); 
+						echo file_get_contents($ServletPREFIX."id=".$hashlink."&metric=bc&rank=10"); 
 					}
 				?>
 	        </div>
