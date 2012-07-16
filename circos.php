@@ -3,6 +3,7 @@
   <head>
 	<?php
 		$url = $_GET['url'];
+		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
 	?>
     <meta charset="utf-8">
     <title>GEXF Vizz</title>
@@ -58,9 +59,9 @@
 		</ul>
 		
 		<?php
-		$cc_pic = file_get_contents("http://84.200.8.141:8080/GEXFServer/Servlet?url=".$_GET['url']."&metric=cc&rank=20&circos=true"); 
+		$cc_pic = file_get_contents($ServletPREFIX."url=".$_GET['url']."&metric=cc&rank=20&circos=true"); 
 		$small_cc_pic = preg_replace("/\\.[^.\\s]{3,4}$/", "", $cc_pic)."_small.png";
-		echo "<h3> Closeness centrality </h3>";
+		echo "<h3> Closeness centrality (Top 20)</h3>";
 		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$small_cc_pic."\" width=\"500\" height=\"500\"></a></p>";
 		?>
 		
