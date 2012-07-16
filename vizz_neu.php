@@ -196,8 +196,8 @@
 	        <div id="bc" class="span4">
 				<?php
 				if($bcedges == "true"){
-					$bcurl = $ServletPREFIX."eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10&bcedges=true";
-					echo "<h3> Edges: </h3>";
+					$bcurl = $ServletPREFIX."eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=5&bcedges=true";
+					echo "<h3> Top 5 Edges: </h3>";
 					echo file_get_contents($bcurl); 
 				}
 				?>
