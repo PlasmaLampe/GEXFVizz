@@ -148,9 +148,9 @@
 				<div id="slider" >
 					<div id="sliderBox"></div>
 					<div class="buttons-container">
-						<input style="width:80px" type="button" id='Day-' value="Step -">
+						<input style="width:80px" type="button" id='Day-' value="N/A">
 						<input style="width:140px" type="button" id='PlayAnimation' value="Play animation">
-						<input style="width:80px" type="button" id='Day+' value="Step +">
+						<input style="width:80px" type="button" id='Day+' value="Step+">
 					</div>
 				</div>
 			</div>

@@ -219,8 +219,10 @@ function init() {
 	function updateButtonLabel(id,newvalue){
 		if(slider.getValue() == 0 && newvalue == -1){
 			document.getElementById(id).value="N/A";
+		}else if(slider.getValue() == (maxdate-mindate) && newvalue == +1){
+			document.getElementById(id).value="N/A";
 		}else{
-			var newcalcDate = slider.getValue() + mindate + newvalue;
+			var newcalcDate = parseInt(slider.getValue()) + parseInt(mindate) + parseInt(newvalue);
 			var finalvalue = "show "+newcalcDate;
 			document.getElementById(id).value=finalvalue;
 		}	
@@ -231,12 +233,14 @@ function init() {
 		setInterval(function(){sigInst.HideWrongTimeNodes(+1)},500);
 	},true);
 	document.getElementById('Day-').addEventListener('click',function(){
-		updateButtonLabel("Day-",-1);
 		sigInst.HideWrongTimeNodes(-1);
+		updateButtonLabel("Day+",+1);
+		updateButtonLabel("Day-",-1);
 	},true);
 	document.getElementById('Day+').addEventListener('click',function(){
-		updateButtonLabel("Day+",+1);
 		sigInst.HideWrongTimeNodes(+1);
+		updateButtonLabel("Day+",1);
+		updateButtonLabel("Day-",-1);
 	},true);	
 }
 
