@@ -159,16 +159,18 @@
 			<?php
 				$bcPOSTFIX = "";
 				if($_GET['bcedges'] != null){ // add some vars, because we have a bibliographic coupling graph here
-					$bcPOSTFIX = "&syear=".$syear."&eyear=".$eyear."&bcedges=true";
+					$bcPOSTFIX = "&syear=".$syear."&eyear=".$eyear."&bcedges=true&eventseriesid=".$eventseriesid;
 				}
 				$linktext = "<h3>use this link to share this page with your partners and friends:</h3>";
+				$finalperLink = "";
 				if($_GET['url'] != null){
 					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
-					echo $linktext.$WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
+					$finalperLink = $linktext.$WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
 				}else{
 					$hashlink = $_GET['id'];
-					echo $linktext.$WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX; 
+					$finalperLink = $linktext.$WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX;
 				}
+				echo "<a href =\"".$finalperLink."\">".$finalperLink."</a>";
 			?>
 			</div>
 			<div class="vspace"></div>
