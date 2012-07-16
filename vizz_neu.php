@@ -165,12 +165,12 @@
 				$finalperLink = "";
 				if($_GET['url'] != null){
 					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
-					$finalperLink = $linktext.$WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
+					$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
 				}else{
 					$hashlink = $_GET['id'];
-					$finalperLink = $linktext.$WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX;
+					$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX;
 				}
-				echo "<a href =\"".$finalperLink."\">".$finalperLink."</a>";
+				echo $linktext."<a href =\"".$finalperLink."\">".$finalperLink."</a>";
 			?>
 			</div>
 			<div class="vspace"></div>
