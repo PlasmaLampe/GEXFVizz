@@ -155,26 +155,26 @@
 				</div>
 			</div>
 			<div class="vspace"></div>
-			<div id="perLink">
-			<?php
-				$bcPOSTFIX = "";
-				if($_GET['bcedges'] != null){ // add some vars, because we have a bibliographic coupling graph here
-					$bcPOSTFIX = "&syear=".$syear."&eyear=".$eyear."&bcedges=true&eventseriesid=".$eventseriesid;
-				}
-				$linktext = "<h3>use this link to share this page with your partners and friends:</h3>";
-				$finalperLink = "";
-				if($_GET['url'] != null){
-					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
-					$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
-				}else{
-					$hashlink = $_GET['id'];
-					$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX;
-				}
-				echo $linktext."<a href =\"".$finalperLink."\">".$finalperLink."</a>";
-			?>
-			</div>
-			<div class="vspace"></div>
-			<div id="downloadLink">
+			<div class="row">
+	        <div id="perLink" class="span4">
+				<?php
+					$bcPOSTFIX = "";
+					if($_GET['bcedges'] != null){ // add some vars, because we have a bibliographic coupling graph here
+						$bcPOSTFIX = "&syear=".$syear."&eyear=".$eyear."&bcedges=true&eventseriesid=".$eventseriesid;
+					}
+					$linktext = "<h3>use this link to share this page with your partners and friends:</h3>";
+					$finalperLink = "";
+					if($_GET['url'] != null){
+						$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
+						$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
+					}else{
+						$hashlink = $_GET['id'];
+						$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX;
+					}
+					echo $linktext."<a href =\"".$finalperLink."\">click here</a>";
+				?>
+	        </div>
+	        <div id="downloadLink" class="span4">			
 			<?php
 				$linktext = "<h3>Download this gexf file here:</h3>";
 				$finalperLink = "";
@@ -185,9 +185,13 @@
 					$hashlink = $_GET['id'];
 					$finalperLink = $WebPREFIX."hash/".$hashlink.".gexf";
 				}
-				echo $linktext."<a href =\"".$finalperLink."\">".$finalperLink."</a>";
+				echo $linktext."<a href =\"".$finalperLink."\">click here</a>";
 			?>
-			</div>
+	       </div>
+	        <div id="empty" class="span4">
+
+	        </div>
+	      </div>
 			<div class="vspace"></div>
 			<div class="row">
 	        <div id="timeBox" class="span4">
