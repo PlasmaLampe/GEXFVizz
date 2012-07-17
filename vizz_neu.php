@@ -174,6 +174,21 @@
 			?>
 			</div>
 			<div class="vspace"></div>
+			<div id="downloadLink">
+			<?php
+				$linktext = "<h3>Download this gexf file here:</h3>";
+				$finalperLink = "";
+				if($_GET['url'] != null){
+					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
+					$finalperLink = $WebPREFIX."hash/".$hashval.".gexf"; 
+				}else{
+					$hashlink = $_GET['id'];
+					$finalperLink = $WebPREFIX."hash/".$hashlink.".gexf";
+				}
+				echo $linktext."<a href =\"".$finalperLink."\">".$finalperLink."</a>";
+			?>
+			</div>
+			<div class="vspace"></div>
 			<div class="row">
 	        <div id="timeBox" class="span4">
 			<h3>Time information:</h3>
