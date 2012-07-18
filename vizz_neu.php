@@ -182,7 +182,6 @@
 				
 				if($_GET['url'] != null){
 					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
-					$finalperLink = $WebPREFIX."hash/".$hashval.".gexf"; 
 				}else{
 					$hashval = $_GET['id'];		
 				}
@@ -191,7 +190,7 @@
 				
 				$linktextproject = "<h4>Download this gephi project file here:</h4>";
 				$finalperLinkproject = file_get_contents($ServletPREFIX."id="."hash/".$hashval."&getproject=true");
-				echo $linktext."<a href =\"".$finalperLinkproject."\">click here</a>";
+				echo $linktextproject."<a href =\"".$finalperLinkproject."\">click here</a>";
 			?>
 	       </div>
 	        <div id="empty" class="span4">
