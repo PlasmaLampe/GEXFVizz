@@ -176,16 +176,22 @@
 	        </div>
 	        <div id="downloadLink" class="span4">			
 			<?php
-				$linktext = "<h3>Download this gexf file here:</h3>";
+				$linktext = "<h4>Download this gexf file here:</h4>";
 				$finalperLink = "";
+				$hashval = "";
+				
 				if($_GET['url'] != null){
 					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
 					$finalperLink = $WebPREFIX."hash/".$hashval.".gexf"; 
 				}else{
-					$hashlink = $_GET['id'];
-					$finalperLink = $WebPREFIX."hash/".$hashlink.".gexf";
+					$hashval = $_GET['id'];		
 				}
+				$finalperLink = $WebPREFIX."hash/".$hashval.".gexf";
 				echo $linktext."<a href =\"".$finalperLink."\">click here</a>";
+				
+				$linktextproject = "<h4>Download this gephi project file here:</h4>";
+				$finalperLinkproject = file_get_contents($ServletPREFIX."id="."hash/".$hashval."&getproject=true");
+				echo $linktext."<a href =\"".$finalperLinkproject."\">click here</a>";
 			?>
 	       </div>
 	        <div id="empty" class="span4">
