@@ -189,7 +189,7 @@
 				echo $linktext."<a href =\"".$finalperLink."\">click here</a>";
 				
 				$linktextproject = "<h4>Download this gephi project file here:</h4>";
-				$finalperLinkproject = file_get_contents($ServletPREFIX."id="."hash/".$hashval."&getproject=true");
+				$finalperLinkproject = file_get_contents($ServletPREFIX."id=".$hashval."&getproject=true");
 				echo $linktextproject."<a href =\"".$finalperLinkproject."\">click here</a>";
 			?>
 	       </div>
