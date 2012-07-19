@@ -52,6 +52,10 @@ function getWeightInYears(attr, from, to){
 }
 
 function init() {	
+	// init buttons
+	updateButtonLabel("Day+",+1);
+	updateButtonLabel("Day-",-1);
+	
 	//load graph
   var sigInst = sigma.init($('#sigma-example')[0]).drawingProperties({
     defaultLabelColor: '#fff',
