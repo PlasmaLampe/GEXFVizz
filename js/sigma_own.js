@@ -51,11 +51,7 @@ function getWeightInYears(attr, from, to){
     }).join('');
 }
 
-function init() {	
-	// init buttons
-	updateButtonLabel("Day+",+1);
-	updateButtonLabel("Day-",-1);
-	
+function init() {		
 	//load graph
   var sigInst = sigma.init($('#sigma-example')[0]).drawingProperties({
     defaultLabelColor: '#fff',
@@ -72,6 +68,10 @@ function init() {
 		var file = "hash/"+getQueryVariable('id')+".gexf";
 		parser = sigInst.parseGexf(file);
 	}
+	
+	// init buttons
+	updateButtonLabel("Day+",+1);
+	updateButtonLabel("Day-",-1);
 	
 	// Bind events :
 	  var greyColor = '#666';
