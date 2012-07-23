@@ -238,7 +238,7 @@
 			<div class="row">
 	        <div id="dcBox" class="span4">
 				<?php
-	          	echo "<h3><a id=\"zoomDC\" href=\"\#\">Degree Centrality</a> | <a href=\"\#\" id=\"dcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"data.php?url=\"".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=dc&rank=10000"."\">show all</a></h3>";
+	          	echo "<h3><a id=\"zoomDC\" href=\"\#\">Degree Centrality</a> | <a href=\"\#\" id=\"dcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=dc&rank=10000\">show all</a></h3>";
 				
 					if($_GET['url'] != null){
 						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=dc&rank=10"); 
@@ -249,7 +249,7 @@
 				?>
 	        </div>
 	        <div id="ccBox" class="span4">
-	          <?php echo "<h3><a id=\"zoomCC\" href=\"\#\">Closeness Centrality</a> | <a href=\"\#\" id=\"ccHover\" rel=\"tooltip\" >(?)</a> | <a href=\"data.php?url=\"".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=cc&rank=10000"."\">show all</a></h3>";
+	          <?php echo "<h3><a id=\"zoomCC\" href=\"\#\">Closeness Centrality</a> | <a href=\"\#\" id=\"ccHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=cc&rank=10000\">show all</a></h3>";
 				
 					if($_GET['url'] != null){
 						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=cc&rank=10"); 
@@ -260,7 +260,7 @@
 				?>
 	       </div>
 	        <div id="bcBox" class="span4">
-				<?php echo "<h3><a id=\"zoomBC\" href=\"\#\">Betweenness Centrality</a> | <a href=\"\#\" id=\"bcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"data.php?url=\"".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=bc&rank=10000"."\">show all</a></h3>";
+				<?php echo "<h3><a id=\"zoomBC\" href=\"\#\">Betweenness Centrality</a> | <a href=\"\#\" id=\"bcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=bc&rank=10000\">show all</a></h3>";
 					if($_GET['url'] != null){
 						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=bc&rank=10"); 
 					}else{
