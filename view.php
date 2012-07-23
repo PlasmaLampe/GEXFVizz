@@ -7,6 +7,8 @@
 	
 	<?php
 		$data = $_GET['url'];
+		$metric = $_GET['metric'];
+		$rank = $_GET['rank'];
 	?>
 	
     <meta charset="utf-8">
@@ -65,8 +67,8 @@
 		  </li>
 		</ul>
 		<?php
-			echo "stuff from:".$data;
-			$result = file_get_contents($data); 
+			$link = $data."&metric=".$metric."&rank=".$rank;
+			$result = file_get_contents($link); 
 			echo $result;
 		?>	
     </div> <!-- /container -->
