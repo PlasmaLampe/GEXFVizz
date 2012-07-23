@@ -65,6 +65,7 @@
 		  </li>
 		</ul>
 		<?php
+			echo "stuff from:".$data;
 			$result = file_get_contents($data); 
 			echo $result;
 		?>	
