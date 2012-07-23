@@ -26,6 +26,7 @@
     </style>
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/own.css">
+	<script type="text/javascript" src="js/sortable.js"></script>
   </head>
 
   <body>
