@@ -9,6 +9,11 @@
 		$data = $_GET['url'];
 		$metric = $_GET['metric'];
 		$rank = $_GET['rank'];
+		
+		$syear = $_GET['syear'];
+		$eyear = $_GET['eyear'];
+		$bcedges = $_GET['bcedges'];
+		$eventseriesid = $_GET['eventseriesid'];
 	?>
 	
     <meta charset="utf-8">
@@ -68,9 +73,15 @@
 		  </li>
 		</ul>
 		<?php
+		$result = "";
+		if($bcedges != "true"){
 			$link = $data."&metric=".$metric."&rank=".$rank;
 			$result = file_get_contents($link); 
-			echo $result;
+		}else{
+			$link = $data."&eventseriesid=".$eventseriesid."&rank=".$rank."&syear=".$syear."&eyear=".$eyear."&bcedges=true";
+			$result = file_get_contents($link);
+		}
+		echo $result;
 		?>	
     </div> <!-- /container -->
   </body>

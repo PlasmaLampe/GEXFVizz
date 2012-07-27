@@ -3,6 +3,9 @@
   <head>
 	<?php
 		$url = $_GET['url'];
+		$metric = $_POST['metric'];
+		$rank = $_POST['itemcount'];
+		$style = $_POST['style'];
 		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
 	?>
     <meta charset="utf-8">
@@ -59,9 +62,10 @@
 		</ul>
 		
 		<?php
-		$cc_pic = file_get_contents($ServletPREFIX."url=".$_GET['url']."&metric=cc&rank=20&circos=true"); 
+		$paras = "&circos=true&metric=".$metric."&rank=".$rank."&style=".$style;
+		$cc_pic = file_get_contents($ServletPREFIX."url=".$_GET['url'].$paras); 
 		$small_cc_pic = preg_replace("/\\.[^.\\s]{3,4}$/", "", $cc_pic)."_small.png";
-		echo "<h3> Closeness centrality (Top 20)</h3>";
+		echo "<h3> ".$metric." (Top ".$rank.")</h3>";
 		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$small_cc_pic."\" width=\"500\" height=\"500\"></a></p>";
 		?>
 		

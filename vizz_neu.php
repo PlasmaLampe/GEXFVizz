@@ -104,11 +104,11 @@
 		  </li>
 		 <?php 
 		if($_GET['url'] != null){
-			echo "<li><a href=\"circos.php?url=data/".basename($_GET['url'])."\">... show me the Circos visualization</a></li>";
+			echo "<li><a href=\"circos_select.php?url=data/".basename($_GET['url'])."\">... show me the Circos visualization</a></li>";
 		}else{
 			$hashlink = $_GET['id'];
 			
-			echo "<li><a href=\"circos.php?url=hash/".$hashlink.".gexf\">... show me the Circos visualization</a></li>";
+			echo "<li><a href=\"circos_select.php?url=hash/".$hashlink.".gexf\">... show me the Circos visualization</a></li>";
 		}
 			?>
 		</ul>
@@ -228,7 +228,8 @@
 				<?php
 				if($bcedges == "true"){
 					$bcurl = $ServletPREFIX."eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=5&bcedges=true";
-					echo "<h3> Top 5 Edges: </h3>";
+					$bAllcurl = $ServletPREFIX."eventseriesid=".$eventseriesid."&syear=".$syear."&eyear=".$eyear."&rank=10000&bcedges=true";
+					echo "<h3> Top 5 Edges:  | <a href=\"view.php?url=".$bAllcurl."\">show all</a></h3>";
 					echo file_get_contents($bcurl); 
 				}
 				?>
