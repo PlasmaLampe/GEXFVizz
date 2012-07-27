@@ -80,8 +80,9 @@
 
 				// download file to server
 				file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL));
-
-				echo "your file has been downloaded, click <a href='vizz_neu?url=data/".$conference.$syear.$eyear.".gexf&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")'>here</a> to continue ...";
+				$hashval = file_get_contents($ServletPREFIX."url="."data/".$conference.$syear.$eyear.".gexf"."&getsha=1");
+				
+				echo "your file has been downloaded, click <a href='vizz_neu?id=".$hashval."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")'>here</a> to continue ...";
 			}elseif($_POST['chosenmetric'] == "co-citation"){					
 				$link = file_get_contents($ccremoteURL); 
 				echo "your file has been generated, click <a href=\"".$link."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";		
