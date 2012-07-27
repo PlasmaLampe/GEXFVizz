@@ -115,6 +115,7 @@ function init() {
 	  });
 
 	sigInst.myRandomLayout();
+	sigInst.HideWrongTimeNodes(-1);
 	/*
   (function(){
     var popUp;
