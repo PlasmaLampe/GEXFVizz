@@ -49,6 +49,7 @@
 	<script src="js/sigma.fr.js"></script>
 	<script src="js/sigma.circ.js"></script>
 	<script src="js/sigma.random.js"></script>
+	<script src="js/sigma.hideNodes.js"></script>
 	<script src="js/sigma_own.js"></script>
 	<script src="js/sigma.parseGexfPlus.js"></script>
 	<script src="js/bootstrap-tooltip.js"></script>
