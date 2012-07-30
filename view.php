@@ -72,6 +72,7 @@
 		    Statistics
 		  </li>
 		</ul>
+		Note: you can click on the table heading entries like "name" to sort the table ... <br>
 		<?php
 		$result = "";
 		if($bcedges != "true"){
