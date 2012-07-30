@@ -66,7 +66,7 @@
 		$paras = "&circos=true&metric=".$metric."&rank=".$rank."&style=".$style;
 		$cc_pic = file_get_contents($ServletPREFIX."url=".$_GET['url'].$paras); 
 		$small_cc_pic = preg_replace("/\\.[^.\\s]{3,4}$/", "", $cc_pic)."_small.png";
-		echo "<h3> ".$metric." (Top ".$rank.")</h3> | (<a href=\"".$IP."circos/gexfCircos.pdf\">I don't understand these diagrams!</a>)";
+		echo "<h3> ".$metric." (Top ".$rank.") | (<a href=\"".$IP."circos/gexfCircos.pdf\">I don't understand these diagrams!</a></h3>)";
 		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$small_cc_pic."\" width=\"500\" height=\"500\"></a></p>";
 		?>
 		
