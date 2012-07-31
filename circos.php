@@ -74,7 +74,7 @@
 		//$small_cc_pic = preg_replace("/\\.[^.\\s]{3,4}$/", "", $cc_pic)."_small.png";
 		echo "<h3> ".$metric." (Top ".$rank.") | (<a href=\"".$IP."circos/gexfCircos.pdf\">I don't understand these diagrams!</a>)</h3>";
 		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$cc_pic."\" width=\"600\" height=\"600\"></a></p><br>";
-		echo "<h4>Download the circos configuration files:<h4> <a href=\"".$IP."circos/data/".$hash_clean.".zip\">download</a>"; 
+		echo "<h4>Download the circos configuration files:</h4> <a href=\"".$IP."circos/data/".$hash_clean.".zip\">download</a>"; 
 		?>
 		
 		
