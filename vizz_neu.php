@@ -50,6 +50,7 @@
 	<script src="js/sigma.circ.js"></script>
 	<script src="js/sigma.random.js"></script>
 	<script src="js/sigma.hideNodes.js"></script>
+	<script src="js/sigma.findNode.js"></script>
 	<script src="js/sigma_own.js"></script>
 	<script src="js/sigma.parseGexfPlus.js"></script>
 	<script src="js/bootstrap-tooltip.js"></script>
@@ -152,6 +153,8 @@
 						<input style="width:80px" type="button" id='Day-' value="N/A">
 						<input style="width:140px" type="button" id='PlayAnimation' value="Play animation">
 						<input style="width:80px" type="button" id='Day+' value="Step+">
+						
+						| Filter name: <input type="text" id="find"/>
 					</div>
 				</div>
 			</div>

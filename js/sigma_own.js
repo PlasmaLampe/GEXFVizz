@@ -184,6 +184,9 @@ function init() {
 		}	
 	}
 	
+	document.getElementById('find').addEventListener('keyup',function(){
+		sigInst.findNode(this);
+	},true);
 	document.getElementById('PlayAnimation').addEventListener('click',function(){
 		currentDay = slider.getValue();
 		setInterval(function(){sigInst.HideWrongTimeNodes(+1)},500);
