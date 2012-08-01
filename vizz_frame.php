@@ -72,7 +72,7 @@
 					if($_GET['bcedges'] != null){ // add some vars, because we have a bibliographic coupling graph here
 						$bcPOSTFIX = "&syear=".$syear."&eyear=".$eyear."&bcedges=true&eventseriesid=".$eventseriesid;
 					}
-					$linktext = "<h4>use this link to open this graph with GEXF Vizz:</h4>";
+					$linktext = "<h4>use this link to open this graph with GEXF Vizz</h4>";
 					$finalperLink = $WebPREFIX."vizz_neu.php?id=".$id."&name=".$name.$bcPOSTFIX;
 					
 					echo "<a href =\"".$finalperLink."\">".$linktext."</a>";

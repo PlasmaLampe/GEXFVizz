@@ -176,7 +176,7 @@
 					
 					$embedLink = $WebPREFIX."vizz_frame.php?id=".$hashval."&name=".$name.$bcPOSTFIX;
 					echo "<h4>Use this code to embed this graph</h4>";
-					echo "<pre class=\"prettyprint linenums\">".htmlspecialchars("<iframe src=\"".$embedLink."\" width=\"800\" height=\"600\" name=\"embeddedGEXFVizz\"><p>Your browser can't show iframes: But you can open the embedded page with <a href=\"".$embedLink."\">this</a> link...</p></iframe>")."</pre>";
+					echo "<pre class=\"prettyprint linenums\">".htmlspecialchars("<iframe src=\"".$embedLink."\" width=\"800\" height=\"670\" name=\"embeddedGEXFVizz\"><p>Your browser can't show iframes: But you can open the embedded page with <a href=\"".$embedLink."\">this</a> link...</p></iframe>")."</pre>";
 				?>
 	        </div>
 	        <div id="downloadLink" class="span4">			
