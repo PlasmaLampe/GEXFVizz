@@ -163,16 +163,20 @@
 					if($_GET['bcedges'] != null){ // add some vars, because we have a bibliographic coupling graph here
 						$bcPOSTFIX = "&syear=".$syear."&eyear=".$eyear."&bcedges=true&eventseriesid=".$eventseriesid;
 					}
-					$linktext = "<h3>use this link to share this page with your partners and friends:</h3>";
-					$finalperLink = "";
+					$linktext = "<h4>use this link to share this page with your partners and friends:</h4>";
+					$hashval = "";
 					if($_GET['url'] != null){
 						$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
-						$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX; 
+
 					}else{
-						$hashlink = $_GET['id'];
-						$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashlink."&name=".$name.$bcPOSTFIX;
+						$hashval = $_GET['id'];
 					}
+					$finalperLink = $WebPREFIX."vizz_neu.php?id=".$hashval."&name=".$name.$bcPOSTFIX;
 					echo $linktext."<a href =\"".$finalperLink."\">click here</a>";
+					
+					$embedLink = $WebPREFIX."vizz_frame.php?id=".$hashval."&name=".$name.$bcPOSTFIX;
+					echo "<h4>Use this code to embed this graph</h4>";
+					echo "<pre class=\"prettyprint linenums\">".htmlspecialchars("<iframe src=\"".$embedLink."\" width=\"800\" height=\"600\" name=\"embeddedGEXFVizz\"><p>Your browser can't show iframes: But you can open the embedded page with <a href=\"".$embedLink."\">this</a> link...</p></iframe>")."</pre>";
 				?>
 	        </div>
 	        <div id="downloadLink" class="span4">			
