@@ -61,7 +61,12 @@
 		  <li class="active"><a href="uploadown.php">... no, let me upload my own gexf file</a></li>
 		</ul>
 		<hr>
-
+		Please make sure, that your file has the following properties:
+		<ul>
+		  <li>Every edge has a value for weight (e.g. &lt;edge id=&quot;...&quot; source=&quot;...&quot; target=&quot;...&quot; weight=&quot;some integer&quot;/&gt;)</li>
+		  <li>You have integer dates at your nodes (e.g. &lt;node id=&quot;...&quot; label=&quot;...&quot; start=&quot;some integer&quot;/&gt;)</li>
+		</ul>
+		
 		<form action="vizz_neu.php" method="get" class="form-horizontal">  
 		        <fieldset>  
 		          <legend>Ok, now we need a file to work with ...</legend>  
