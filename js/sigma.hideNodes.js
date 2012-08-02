@@ -40,8 +40,8 @@ sigma.publicPrototype.HideWrongTimeNodes = function(value) {
 		if(curWeight == ""){
 			//e.hidden = 1;
 			
-			if(e.weight == "") // no weight value has been set
-				e.weight = 1; // set weight to 1 as default
+			//if(e.weight == "") // no weight value has been set
+			//	e.weight = 1; // set weight to 1 as default
 		}else{
 			//alert(curWeight);
 			e.weight = (curWeight * 2)-1; // this formula should highlight high weight values 
