@@ -36,12 +36,13 @@ sigma.publicPrototype.HideWrongTimeNodes = function(value) {
 	// hide edges
 	this.iterEdges(function(e){
 		var curWeight = getWeightInYears(e['attr']['attributes'],starthere, stophere);
-
+		
 		if(curWeight == ""){
 			//e.hidden = 1;
 			e.weight = 1; // set weight to 1 as default
 		}else{
-			e.weight = curWeight;
+			//alert(curWeight);
+			e.weight = (curWeight * 2)-1; // this formula should highlight high weight values 
 			//e.hidden = 0;
 		}
   	});
