@@ -33,13 +33,15 @@ sigma.publicPrototype.HideWrongTimeNodes = function(value) {
 	var starthere = parseInt(currentDay) + parseInt(mindate);
 	var stophere = starthere + 1;
 	
-	// hide edges
+	// hide edges - update edge weight every timestep
 	this.iterEdges(function(e){
 		var curWeight = getWeightInYears(e['attr']['attributes'],starthere, stophere);
 		
 		if(curWeight == ""){
 			//e.hidden = 1;
-			e.weight = 1; // set weight to 1 as default
+			
+			if(e.weight == "") // no weight value has been set
+				e.weight = 1; // set weight to 1 as default
 		}else{
 			//alert(curWeight);
 			e.weight = (curWeight * 2)-1; // this formula should highlight high weight values 
