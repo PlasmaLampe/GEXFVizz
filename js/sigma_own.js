@@ -34,6 +34,11 @@ function attributesToString(attr) {
     '</ul>';
 }
 
+function labelToPopupString(n) {
+  return '<ul>' + '<li>' + n.label + '</li>' + '</ul>';
+}
+
+
 function attributesToSmallString(attr) {
   return attr.map(function(o){
       return o.attr + ':' + o.val;
@@ -55,12 +60,15 @@ function init() {
 	//load graph
   var sigInst = sigma.init($('#sigma-example')[0]).drawingProperties({
     defaultLabelColor: '#fff',
+	defaultLabelSize: 0,
 	defaultLabelBGColor: '#fff',
 	defaultLabelHoverColor: '#000'
   }).graphProperties({
     minNodeSize: 0.5,
     maxNodeSize: 5
   });
+
+	var popUpLabels = {};
 	
 	if(getQueryVariable('url') != false){
 		parser = sigInst.parseGexf("data/"+findBaseName(getQueryVariable('url')));
@@ -102,6 +110,33 @@ function init() {
 	      }else{
 	        n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
 	        n.attr['grey'] = 0;
+			
+			// show labels if node is not hidden
+			if(n.hidden != 1 && n.displayX > 0 && n.displayY > 0 && n.displayX < 750 && n.displayY < 450){
+				popUpLabels["_"+n.id] = $(
+		        '<div class="node-info-popup"></div>'
+		      	).append(
+		        //attributesToString( n['attr']['attributes'] )
+					labelToPopupString(n)
+		      	).attr(
+		        'id',
+		        'node-info'+sigInst.getID()
+		      	).css({
+		        'display': 'inline-block',
+		        'border-radius': 3,
+		        'padding': 5,
+		        'background': '#fff',
+		        'color': '#000',
+		        'box-shadow': '0 0 4px #666',
+		        'position': 'absolute',
+		        'left': n.displayX,
+		        'top': n.displayY+7
+		      });
+
+		      $('ul',popUpLabels["_"+n.id]).css('margin','0 0 0 20px');
+
+		      $('#sigma-example').append(popUpLabels["_"+n.id]);
+			}
 	      }
 	    }).draw(2,2,2);
 	  }).bind('outnodes',function(){
@@ -111,11 +146,16 @@ function init() {
 	    }).iterNodes(function(n){
 	      n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
 	      n.attr['grey'] = 0;
+	
+	      //popUp && popUp.remove();
+		  popUpLabels["_"+n.id] && popUpLabels["_"+n.id].remove();
+	      popUpLabels["_"+n.id] = false;
 	    }).draw(2,2,2);
 	  });
 
 	sigInst.myRandomLayout();
 	sigInst.HideWrongTimeNodes(-1);
+	
 	/*
   (function(){
     var popUp;

@@ -198,7 +198,8 @@
 				
 				$linktextproject = "<h4>Download this gephi project file here:</h4>";
 				$finalperLinkproject = file_get_contents($ServletPREFIX."id=".$hashval."&getproject=true");
-				echo $linktextproject."<a href =\"".$finalperLinkproject."\">click here</a>";
+				echo $linktextproject."<a href =\"".$finalperLinkproject."\">click here</a><br>use 'save target as' to download the files";
+				
 			?>
 	       </div>
 	        <div id="empty" class="span4">
