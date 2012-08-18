@@ -75,10 +75,13 @@
 		            <div class="controls">  
 		              <select name="conferenceseries" id="select0">  
 						<?php
-							$result = mysql_query("SELECT text FROM eventseries");
+						foreach($databases as $database){
+							mysql_select_db($database) or die ("Can't select the database");	
+							$result = mysql_query("SELECT text, filepath FROM eventseries");
 							while($row = mysql_fetch_object($result)){
-						  		echo "<option>".$row->text."</option>";
+						  		echo "<option value=\"".$row->filepath."#".$database."\">".$row->text."</option>";
 							}	
+						}
 						?>
 		              </select>  
 		            </div>  
