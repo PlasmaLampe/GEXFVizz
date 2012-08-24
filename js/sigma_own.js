@@ -60,7 +60,7 @@ function init() {
 	//load graph
   var sigInst = sigma.init($('#sigma-example')[0]).drawingProperties({
     defaultLabelColor: '#fff',
-	defaultLabelSize: 0,
+	defaultLabelSize: 12,
 	defaultLabelBGColor: '#fff',
 	defaultLabelHoverColor: '#000'
   }).graphProperties({
@@ -81,125 +81,8 @@ function init() {
 	updateButtonLabel("Day+",+1);
 	updateButtonLabel("Day-",-1);
 	
-	// Bind events :
-	  var greyColor = '#666';
-	  sigInst.bind('overnodes',function(event){
-	    var nodes = event.content;
-	    var neighbors = {};
-	    sigInst.iterEdges(function(e){
-	      if(nodes.indexOf(e.source)<0 && nodes.indexOf(e.target)<0){
-	        if(!e.attr['grey']){
-	          e.attr['true_color'] = e.color;
-	          e.color = greyColor;
-	          e.attr['grey'] = 1;
-	        }
-	      }else{
-	        e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
-	        e.attr['grey'] = 0;
-
-	        neighbors[e.source] = 1;
-	        neighbors[e.target] = 1;
-	      }
-	    }).iterNodes(function(n){
-	      if(!neighbors[n.id]){
-	        if(!n.attr['grey']){
-	          n.attr['true_color'] = n.color;
-	          n.color = greyColor;
-	          n.attr['grey'] = 1;
-	        }
-	      }else{
-	        n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
-	        n.attr['grey'] = 0;
-			
-			// show labels if node is not hidden
-			if(n.hidden != 1 && n.displayX > 0 && n.displayY > 0 && n.displayX < 750 && n.displayY < 450){
-				popUpLabels["_"+n.id] = $(
-		        '<div class="node-info-popup"></div>'
-		      	).append(
-		        //attributesToString( n['attr']['attributes'] )
-					labelToPopupString(n)
-		      	).attr(
-		        'id',
-		        'node-info'+sigInst.getID()
-		      	).css({
-		        'display': 'inline-block',
-		        'border-radius': 3,
-		        'padding': 5,
-		        'background': '#fff',
-		        'color': '#000',
-		        'box-shadow': '0 0 4px #666',
-		        'position': 'absolute',
-		        'left': n.displayX,
-		        'top': n.displayY+7
-		      });
-
-		      $('ul',popUpLabels["_"+n.id]).css('margin','0 0 0 20px');
-
-		      $('#sigma-example').append(popUpLabels["_"+n.id]);
-			}
-	      }
-	    }).draw(2,2,2);
-	  }).bind('outnodes',function(){
-	    sigInst.iterEdges(function(e){
-	      e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
-	      e.attr['grey'] = 0;
-	    }).iterNodes(function(n){
-	      n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
-	      n.attr['grey'] = 0;
-	
-	      //popUp && popUp.remove();
-		  popUpLabels["_"+n.id] && popUpLabels["_"+n.id].remove();
-	      popUpLabels["_"+n.id] = false;
-	    }).draw(2,2,2);
-	  });
-
 	sigInst.myRandomLayout();
 	sigInst.HideWrongTimeNodes(-1);
-	
-	/*
-  (function(){
-    var popUp;
-
-    function showNodeInfo(event) {
-      popUp && popUp.remove();
-
-      var node;
-      sigInst.iterNodes(function(n){
-        node = n;
-      },[event.content[0]]);
- 
-      popUp = $(
-        '<div class="node-info-popup"></div>'
-      ).append(
-        attributesToString( node['attr']['attributes'] )
-      ).attr(
-        'id',
-        'node-info'+sigInst.getID()
-      ).css({
-        'display': 'inline-block',
-        'border-radius': 3,
-        'padding': 5,
-        'background': '#fff',
-        'color': '#000',
-        'box-shadow': '0 0 4px #666',
-        'position': 'absolute',
-        'left': node.displayX,
-        'top': node.displayY+15
-      });
-
-      $('ul',popUp).css('margin','0 0 0 20px');
-
-      $('#sigma-example').append(popUp);
-    }
-
-    function hideNodeInfo(event) {
-      popUp && popUp.remove();
-      popUp = false;
-    }
-
-    sigInst.bind('overnodes',showNodeInfo).bind('outnodes',hideNodeInfo).draw();
-  })();
-	*/
 
 	// bind the methods to buttons
 	document.getElementById('randomlayout').addEventListener('click',function(){
@@ -224,6 +107,83 @@ function init() {
 		}	
 	}
 	
+	document.getElementById('highlightConnected').addEventListener('click',function(){
+		if(document.getElementById('highlightConnected').checked){
+			var greyColor = '#666';
+			  sigInst.bind('overnodes',function(event){
+			    var nodes = event.content;
+				
+			    var neighbors = {};
+			    sigInst.iterEdges(function(e){
+			      if(nodes.indexOf(e.source)<0 && nodes.indexOf(e.target)<0){
+			        if(!e.attr['grey']){
+			          e.attr['true_color'] = e.color;
+			          e.color = greyColor;
+			          e.attr['grey'] = 1;
+			        }
+			      }else{
+			        e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
+			        e.attr['grey'] = 0;
+
+			        neighbors[e.source] = 1;
+			        neighbors[e.target] = 1;
+			      }
+			    }).iterNodes(function(n){
+			      if(!neighbors[n.id]){
+			        if(!n.attr['grey']){
+			          n.attr['true_color'] = n.color;
+			          n.color = greyColor;
+			          n.attr['grey'] = 1;
+			        }
+			      }else{
+			        n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
+			        n.attr['grey'] = 0;
+
+					// show labels if node is not hidden
+					if(n.hidden != 1 && n.displayX > 0 && n.displayY > 0 && n.displayX < 750 && n.displayY < 450){
+						popUpLabels["_"+n.id] = $(
+				        '<div class="node-info-popup"></div>'
+				      	).append(
+				        //attributesToString( n['attr']['attributes'] )
+							labelToPopupString(n)
+				      	).attr(
+				        'id',
+				        'node-info'+sigInst.getID()
+				      	).css({
+				        'display': 'inline-block',
+				        'border-radius': 3,
+				        'padding': 5,
+				        'background': '#fff',
+				        'color': '#000',
+				        'box-shadow': '0 0 4px #666',
+				        'position': 'absolute',
+				        'left': n.displayX,
+				        'top': n.displayY+7
+				      });
+
+				      $('ul',popUpLabels["_"+n.id]).css('margin','0 0 0 20px');
+
+				      $('#sigma-example').append(popUpLabels["_"+n.id]);
+					}
+			      }
+			    }).draw(2,2,2);
+			  }).bind('outnodes',function(){
+			    sigInst.iterEdges(function(e){
+			      e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
+			      e.attr['grey'] = 0;
+			    }).iterNodes(function(n){
+			      n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
+			      n.attr['grey'] = 0;
+
+			      //popUp && popUp.remove();
+				  popUpLabels["_"+n.id] && popUpLabels["_"+n.id].remove();
+			      popUpLabels["_"+n.id] = false;
+			    }).draw(2,2,2);
+			  });
+		}else{
+			sigInst.unbind('overnodes');
+		}
+	},true);
 	document.getElementById('find').addEventListener('keyup',function(){
 		sigInst.findNode(this);
 	},true);

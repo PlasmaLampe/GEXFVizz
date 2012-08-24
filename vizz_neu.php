@@ -154,7 +154,7 @@
 						<input style="width:140px" type="button" id='PlayAnimation' value="Play animation">
 						<input style="width:80px" type="button" id='Day+' value="Step+">
 						
-						| Filter name: <input type="text" id="find"/>
+						| Filter name: <input type="text" id="find"/> | Highlight all connected nodes: <input type="checkbox" name="highlightConnected" id="highlightConnected"/>
 					</div>
 				</div>
 			</div>
