@@ -9,7 +9,7 @@
 		$conferenceString = $_POST['conferenceseries'];
 		
 		list($conferencePath, $database) = explode("#", $conferenceString);
-		mysql_select_db($database) or die ("Can't select the database");
+		mysql_select_db(trim($database)) or die ("Can't select the database");
 		
 		preg_match('/[a-z]*/i',$conferencePath, $co); // clean conference name
 		$conference = $co[0];
