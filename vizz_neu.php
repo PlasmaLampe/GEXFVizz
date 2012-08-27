@@ -169,7 +169,7 @@
 					$linktext = "<h4>use this link to share this page with your partners and friends:</h4>";
 					$hashval = "";
 					if($_GET['url'] != null){
-						$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
+						$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=true"));
 
 					}else{
 						$hashval = $_GET['id'];
@@ -189,7 +189,7 @@
 				$hashval = "";
 				
 				if($_GET['url'] != null){
-					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=1"));
+					$hashval = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getsha=true"));
 				}else{
 					$hashval = $_GET['id'];		
 				}
@@ -217,16 +217,16 @@
 			<h3>Graph information:</h3>				
 				<?php
 					if($_GET['url'] != null){
-						$nae = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getnodesandedges=1"));
-						$dens = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getdensity=1"));
+						$nae = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getnodesandedges=true"));
+						$dens = file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url']."&getdensity=true"));
 						list ($nodes, $edges) = split('#', $nae);
 						$roundDens = round($dens, 2);
 						echo "The graph contains $nodes nodes and $edges edges<br>The graph density is $roundDens";
 					}else{
 						$hashlink = $_GET['id'];
 						
-						$nae = file_get_contents($ServletPREFIX."id=".$hashlink."&getnodesandedges=1");
-						$dens = file_get_contents($ServletPREFIX."id=".$hashlink."&getdensity=1");
+						$nae = file_get_contents($ServletPREFIX."id=".$hashlink."&getnodesandedges=true");
+						$dens = file_get_contents($ServletPREFIX."id=".$hashlink."&getdensity=true");
 						list ($nodes, $edges) = split('#', $nae);
 						$roundDens = round($dens, 2);
 						echo "The graph contains $nodes nodes and $edges edges<br>The graph density is $roundDens";
