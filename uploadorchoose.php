@@ -76,7 +76,7 @@
 		              <select name="conferenceseries" id="select0">  
 						<?php
 						foreach($databases as $database){
-							mysql_select_db($database) or die ("Can't select the database");	
+							mysql_select_db(trim($database)) or die ("Can't select the database");	
 							$result = mysql_query("SELECT text, filepath FROM eventseries");
 							while($row = mysql_fetch_object($result)){
 						  		echo "<option value=\"".$row->filepath."#".$database."\">".$row->text."</option>";
