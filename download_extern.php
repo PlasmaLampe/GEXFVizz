@@ -81,14 +81,16 @@
 		</ul>
 		
 		<h2>Hold on! We are generating your file ...</h2>
-			<?php
+		
+			<?php		
 			if($_POST['chosenmetric'] == "co-authorship"){
+
 				$remoteURL = "http://$USER:$PASSWORD@".strtolower($conference).".aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventseriesid=$idConference";
 
 				// download file to server
 				file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL));
-				$hashval = file_get_contents($ServletPREFIX."url="."data/".$conference.$syear.$eyear.".gexf"."&getsha=1");
-				
+				$hashval = file_get_contents($ServletPREFIX."url="."data/".$conference.$syear.$eyear.".gexf"."&getsha=true");
+
 				echo "your file has been downloaded, click <a href='vizz_neu?id=".$hashval."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")'>here</a> to continue ...";
 			}elseif($_POST['chosenmetric'] == "co-citation"){					
 				$link = file_get_contents($ccremoteURL); 
