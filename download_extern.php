@@ -3,6 +3,13 @@
   <head>
 	<?php
 		include("include/db.php"); // .htaccess secured :)
+		
+		$ctx = stream_context_create(array( 
+		    'http' => array( 
+		        'timeout' => 120 
+		        ) 
+		    ) 
+		);
 	?>
 	
 	<?php
@@ -84,20 +91,22 @@
 		
 			<?php		
 			if($_POST['chosenmetric'] == "co-authorship"){
-
 				$remoteURL = "http://$USER:$PASSWORD@".strtolower($conference).".aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventseriesid=$idConference";
 
 				// download file to server
-				file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL));
+				file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL, 0, $ctx));
+				//file_put_contents("data/".$conference.$syear.$eyear.".gexf", file_get_contents($remoteURL));
 				$hashval = file_get_contents($ServletPREFIX."url="."data/".$conference.$syear.$eyear.".gexf"."&getsha=true");
 
 				echo "your file has been downloaded, click <a href='vizz_neu?id=".$hashval."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")'>here</a> to continue ...";
-			}elseif($_POST['chosenmetric'] == "co-citation"){					
-				$link = file_get_contents($ccremoteURL); 
+			}elseif($_POST['chosenmetric'] == "co-citation"){
+				$link = file_get_contents($ccremoteURL, 0, $ctx); 					
+				//$link = file_get_contents($ccremoteURL); 
 				echo "your file has been generated, click <a href=\"".$link."&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";		
 		//echo '<meta http-equiv="refresh" content="3; URL='.$link.'">';
 			}elseif($_POST['chosenmetric'] == "bibliographic coupling"){
-				$link = file_get_contents($bcremoteURL); 
+				$link = file_get_contents($bcremoteURL, 0, $ctx); 
+				//$link = file_get_contents($bcremoteURL); 
 				echo "your file has been generated, click <a href=\"".$link."&eventseriesid=".$idConference."&syear=".$syear."&eyear=".$eyear."&bcedges=true&name=".$conference."_from_".$syear."_to_".$eyear."(".$_POST['chosenmetric'].")\">here</a> to open it";
 			}
 			?>
