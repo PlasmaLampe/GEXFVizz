@@ -6,7 +6,7 @@
 		
 		$ctx = stream_context_create(array( 
 		    'http' => array( 
-		        'timeout' => 120 
+		        'timeout' => 360 
 		        ) 
 		    ) 
 		);
