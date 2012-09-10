@@ -63,7 +63,7 @@
 		</ul>
 		
 		<?php
-		$paras = "&circos=true&metric=".$metric."&rank=".$rank."&style=".$style;
+		$paras = "&circos=true&metric=".$metric."&rank=".$rank."&preview=".$style;
 		$cc_pic = file_get_contents($ServletPREFIX."url=".$_GET['url'].$paras); 
 		
 		// restore hash name:

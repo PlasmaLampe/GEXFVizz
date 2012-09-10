@@ -80,8 +80,8 @@
 		            <label class="control-label" for="select02">Select level of detail</label>  
 		            <div class="controls">  
 		              <select name="style" id="styleBox">  		                
-						<option value="full">full visualization</option> 
-		                <option value="preview">preview only</option>   
+						<option value="false">full visualization</option> 
+		                <option value="true">preview only</option>   
 		              </select>  
 		            </div>  
 		          </div>
