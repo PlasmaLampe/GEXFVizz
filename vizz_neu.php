@@ -22,7 +22,7 @@
 		$WebPREFIX = "http://131.234.31.148/";
 	?>
 	
-    <!-- Le styles -->
+	<!-- include twitter bootstrap -->
     <link href="css/bootstrap.min.theme.css" rel="stylesheet">
     <style>
       body {
@@ -34,11 +34,14 @@
 	<!-- some libs and other needed stuff -->
 	<link rel="stylesheet" href="css/own.css">
 	<script type="text/javascript">
-		var mindate = -1;
-		var maxdate;
-		var demo = -1;
-		var slider;
-		var currentDay = 0;
+		var mindate = -1;	// minimal date of the graph
+		var maxdate;	// maximal date of the graph
+		//var demo = -1;
+		var slider;	// contains the slider object
+		var currentDay = 0;	// current value of the slider
+		var parser; // contains the gexf parser object
+		var runningAnimation = false; // is currently an animation running ?
+		var animationID; // this id is needed to stop the running animation
 	</script>	
 	
 	<script src="js/jquery.min.js"></script>
@@ -286,7 +289,7 @@
 	      <hr>
 
 	      <footer>
-	        <p>&copy; Company 2012</p>
+	        <p>developed by J&ouml;rg Amelunxen - 2012 - Bachelor Thesis</p>
 	      </footer>
     </div> <!-- /container -->
   </body>

@@ -66,7 +66,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>developed by J&ouml;rg Amelunxen - 2012 - Bachelor Thesis</p>
       </footer>
 
     </div> <!-- /container -->

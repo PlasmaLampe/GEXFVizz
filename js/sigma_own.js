@@ -1,5 +1,3 @@
-var parser;
-
 function findBaseName(url) {
 	var external = url.lastIndexOf('%2F');
 	var cutURL;
@@ -13,7 +11,11 @@ function findBaseName(url) {
  	return cutURL;
 }
 
-/* Source of this snippet ? */
+/* 
+	This function recovers the parameter from the query
+	source: 
+	http://www.zrinity.com/developers/code_samples/code.cfm?CodeID=59&JavaScript=Get_Query_String_variables_in_JavaScript
+*/
 function getQueryVariable(variable)
 {
 	var query = window.location.search.substring(1);
@@ -188,8 +190,18 @@ function init() {
 		sigInst.findNode(this);
 	},true);
 	document.getElementById('PlayAnimation').addEventListener('click',function(){
-		currentDay = slider.getValue();
-		setInterval(function(){sigInst.HideWrongTimeNodes(+1)},500);
+		if(runningAnimation == false){
+			// start the animation
+			currentDay = slider.getValue();
+			animationID = setInterval(function(){playAnimation(sigInst)},500);
+			runningAnimation = true;
+			document.getElementById('PlayAnimation').value="Stop animation";
+		}else{
+			// stop the animation
+			clearInterval(animationID);
+			runningAnimation = false;
+			document.getElementById('PlayAnimation').value="Play animation";
+		}
 	},true);
 	document.getElementById('Day-').addEventListener('click',function(){
 		sigInst.HideWrongTimeNodes(-1);
@@ -204,10 +216,12 @@ function init() {
 }
 
 // play the animation
-function playAnimation(){
+function playAnimation(sigInst){
 	currentDay = slider.getValue();
-	if(currentDay < slider.getMax()){
-		setInterval(function(){sigInst.HideWrongTimeNodes(+1)},1000);
+	var max = maxdate - mindate;
+
+	if(currentDay < max){
+		sigInst.HideWrongTimeNodes(+1);
 	}else{
 		slider.setValue(0);
 	}

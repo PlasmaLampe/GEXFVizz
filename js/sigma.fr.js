@@ -88,7 +88,7 @@ sigma.publicPrototype.myFRLayout = function(iterations,sig) {
 	    	temperature = 0;
 	}
 	
-	// main calculation is done here:
+	// main calculation is done here
 	for(var i=0;i<iterations;i++){
    		calculateRepulsiveForces();
    		calculateAttractiveForces();
