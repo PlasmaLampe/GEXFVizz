@@ -137,7 +137,7 @@
 		<div class="buttons-container">
 			<input style="width:140px" type="button" id='randomlayout' value="random layout">
 			<input style="width:140px" type="button" id='circlayout' value="circular layout">
-			<input style="width:140px" type="button" id='frlayout' value="FR layout">
+			<input style="width:140px" type="button" id='frlayout' value="FR layout (slow)">
 		</div>
 		
 		<br>
