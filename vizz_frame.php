@@ -45,6 +45,7 @@
 	<script src="js/hover_and_zoom.js"></script>
 	<script src="js/vector2.js"></script>
 	<script src="js/sigma.fr.js"></script>
+	<script src="js/sigma.findNode.js"></script>
 	<script src="js/sigma.circ.js"></script>
 	<script src="js/sigma.random.js"></script>
 	<script src="js/sigma.hideNodes.js"></script>
