@@ -6,8 +6,8 @@
 		$metric = $_POST['metric'];
 		$rank = $_POST['itemcount'];
 		$style = $_POST['style'];
-		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
-		$IP = "http://131.234.31.148/";
+		$ServletPREFIX = "http://gexfvizz.cs.upb.de:8080/GEXFServer/Servlet?";
+		$IP = "http://gexfvizz.cs.upb.de/";
 	?>
     <meta charset="utf-8">
     <title>GEXF Vizz</title>
