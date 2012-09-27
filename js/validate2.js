@@ -81,8 +81,11 @@ function blockNonNumbers(obj, other, end, e, allowDecimal, allowNegative)
 	// date modification
 	var newValue = obj.value;
 
-	if(newValue > 2100){
-		obj.value = 2100;
+	var now = new Date();
+	var presentYear = now.getFullYear();
+	
+	if(newValue > presentYear){
+		obj.value = presentYear;
 	}
 	
 	if(end == 1){
