@@ -79,12 +79,15 @@ function blockNonNumbers(obj, start, end, e, allowDecimal, allowNegative)
 	var isFirstD = allowDecimal ? keychar == '.' && obj.value.indexOf('.') == -1 : false;
 	
 	// date modification
+	/* get years */
 	var syear = start.value;
 	var eyear = end.value;
+	var newValue = obj.value;
 
 	var now = new Date();
 	var presentYear = now.getFullYear();
 	
+	/* check year information */
 	if(newValue > presentYear)
 		obj.value = presentYear;
 
