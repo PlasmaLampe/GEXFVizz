@@ -91,7 +91,7 @@ function blockNonNumbers(obj, other, end, e, allowDecimal, allowNegative)
 	if(end == 1){
 		var syear = other.value;
 		
-		if(newValue > 999 && newValue < syear){
+		if(newValue < syear && syear != ""){
 			obj.value = syear;
 		}
 	}
@@ -99,7 +99,7 @@ function blockNonNumbers(obj, other, end, e, allowDecimal, allowNegative)
 	if(end == 0){
 		var eyear = other.value;
 		
-		if(newValue > eyear){
+		if(newValue > eyear && eyear != ""){
 			obj.value = eyear;
 		}
 	}
