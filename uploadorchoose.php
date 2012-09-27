@@ -10,6 +10,8 @@
 
     <!-- Le styles -->
 	<link href="css/bootstrap.min.theme.css" rel="stylesheet">
+	<script src="js/validate2.js"></script>
+	
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -90,14 +92,14 @@
 		          <div class="control-group">  
 		            <label class="control-label" for="input01">Start year</label>  
 		            <div class="controls">  
-		              <input name="syear" type="text" value="2006"class="input-xlarge" id="startyear">  
+		              <input name="syear" type="text" onkeyup="return blockNonNumbers(this, endyear, 0, event, false, false);" value="2006"class="input-xlarge" id="startyear">  
 		            </div>  
 		          </div> 
 		 
 		          <div class="control-group">  
 		            <label class="control-label" for="input02">End year</label>  
 		            <div class="controls">  
-		              <input name="eyear" type="text" value="2012" class="input-xlarge" id="endyear">  
+		              <input name="eyear" type="text" onkeyup="return blockNonNumbers(this, startyear, 1, event, false, false);" value="2012" class="input-xlarge" id="endyear">  
 		            </div>  
 		          </div>
 		
