@@ -46,7 +46,7 @@ function extractNumber(obj, decimalPlaces, allowNegative)
 	
 	obj.value = temp;
 }
-function blockNonNumbers(obj, other, end, e, allowDecimal, allowNegative)
+function blockNonNumbers(obj, start, end, e, allowDecimal, allowNegative)
 {
 	var key;
 	var isCtrl = false;
@@ -79,30 +79,20 @@ function blockNonNumbers(obj, other, end, e, allowDecimal, allowNegative)
 	var isFirstD = allowDecimal ? keychar == '.' && obj.value.indexOf('.') == -1 : false;
 	
 	// date modification
-	var newValue = obj.value;
+	var svalue = start.value;
+	var evalue = end.value;
 
 	var now = new Date();
 	var presentYear = now.getFullYear();
 	
-	if(newValue > presentYear){
+	if(newValue > presentYear)
 		obj.value = presentYear;
-	}
+
+	if(eyear < syear && syear != "")
+		end.value = syear;
 	
-	if(end == 1){
-		var syear = other.value;
-		
-		if(newValue < syear && syear != ""){
-			obj.value = syear;
-		}
-	}
-	
-	if(end == 0){
-		var eyear = other.value;
-		
-		if(newValue > eyear && eyear != ""){
-			obj.value = eyear;
-		}
-	}
+	if(syear > eyear && eyear != "")
+		start.value = eyear;
 	
 	return isFirstN || isFirstD || reg.test(keychar);	
 }
