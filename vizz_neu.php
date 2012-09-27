@@ -36,7 +36,6 @@
 	<script type="text/javascript">
 		var mindate = -1;	// minimal date of the graph
 		var maxdate;	// maximal date of the graph
-		//var demo = -1;
 		var slider;	// contains the slider object
 		var currentDay = 0;	// current value of the slider
 		var parser; // contains the gexf parser object
@@ -46,7 +45,6 @@
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/sigma.concat.js"></script>
-	<script src="zoom/jquery.zoomooz.min"></script>
 	<script src="js/hover_and_zoom.js"></script>
 	<script src="js/vector2.js"></script>
 	<script src="js/sigma.fr.js"></script>
@@ -252,7 +250,7 @@
 	        <div id="dcBox" class="span4">
 				<?php
 					if($_GET['url'] != null){
-						echo "<h3><a id=\"zoomDC\" href=\"\#\">Degree Centrality</a> | <a href=\"\#\" id=\"dcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=dc&rank=10000\">show all</a></h3>";
+						echo "<h3> Degree Centrality | <a href=\"\#\" id=\"dcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=dc&rank=10000\">show all</a></h3>";
 						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=dc&rank=10"); 
 					}else{
 						$hashlink = $_GET['id'];
@@ -264,7 +262,7 @@
 	        <div id="ccBox" class="span4">
 	          <?php 
 					if($_GET['url'] != null){
-						echo "<h3><a id=\"zoomCC\" href=\"\#\">Closeness Centrality</a> | <a href=\"\#\" id=\"ccHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=cc&rank=10000\">show all</a></h3>";
+						echo "<h3> Closeness Centrality | <a href=\"\#\" id=\"ccHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=cc&rank=10000\">show all</a></h3>";
 						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=cc&rank=10"); 
 					}else{
 						$hashlink = $_GET['id'];
@@ -276,7 +274,7 @@
 	        <div id="bcBox" class="span4">
 				<?php 
 					if($_GET['url'] != null){
-						echo "<h3><a id=\"zoomBC\" href=\"\#\">Betweenness Centrality</a> | <a href=\"\#\" id=\"bcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=bc&rank=10000\">show all</a></h3>";
+						echo "<h3> Betweenness Centrality | <a href=\"\#\" id=\"bcHover\" rel=\"tooltip\" >(?)</a> | <a href=\"view.php?url=".$ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=bc&rank=10000\">show all</a></h3>";
 						echo file_get_contents($ServletPREFIX."url="."data/".basename($_GET['url'])."&metric=bc&rank=10"); 
 					}else{
 						$hashlink = $_GET['id'];

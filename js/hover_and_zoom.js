@@ -10,32 +10,3 @@ $(function ()
 $(function ()  
 { $("#bcHover").popover({title: 'Betweenness Centrality', content: "To calculate betweenness centrality, we take every pair of nodes within the network and count how many times a node is placed on the shortest paths between this pair of nodes. After that, we need to divide this value by (n-1)(n-2)/2 (n = the number of nodes in this graph) for standardization."});  
 });
-
-/* zoom stuff */
-$(function() {
-  $("#zoomCC").click(function(e) {
-    e.preventDefault(); 
-
-	$("#ccBox").zoomTarget();
-	
-  });
-});
-
-$(function() {
-  $("#zoomDC").click(function(e) {
-    e.preventDefault(); 
-
-	$("#dcBox").zoomTarget();
-	
-  });
-});
-
-$(function() {
-  $("#zoomBC").click(function(e) {
-    e.preventDefault(); 
-
-	$("#bcBox").zoomTarget();
-	
-  });
-});
-/* ---------------------------*/
