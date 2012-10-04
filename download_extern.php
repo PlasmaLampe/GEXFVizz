@@ -91,6 +91,13 @@
 		
 			<?php		
 			if($_POST['chosenmetric'] == "co-authorship"){
+				if($syear == ""){
+					syear = "1900";
+				}
+				if($eyear == ""){
+					eyear = "2100";
+				}
+				
 				$remoteURL = "http://$USER:$PASSWORD@".strtolower($conference).".aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventseriesid=$idConference";
 
 				// download file to server
