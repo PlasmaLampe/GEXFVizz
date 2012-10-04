@@ -177,6 +177,7 @@ sigma.publicPrototype.parseGexf = function(gexfPath) {
 		slider.setImagePath("slider_codebase/imgs/");
 		slider.setSkin('dhx_skyblue');	
 		slider.setMax(year);
+		slider.attachEvent("onChange", sliderHandler);
 		slider.init();
 		$('div.from').html("view starts at " + mindate);
 		$('div.to').html("and finishes at " + maxdate);

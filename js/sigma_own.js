@@ -1,3 +1,9 @@
+function sliderHandler(pos, slider) {
+    //document.getElementById("a1").innerHTML = "Slider value is " + pos;
+	var difference = currentDay - pos;
+	sigInstGlobal.setHideWrongTimeNodes(pos);
+}
+
 function findBaseName(url) {
 	var external = url.lastIndexOf('%2F');
 	var cutURL;
@@ -70,6 +76,7 @@ function init() {
     maxNodeSize: 5
   });
 
+	sigInstGlobal = sigInst; // store instance of Sigma.js
 	var popUpLabels = {};
 	
 	if(getQueryVariable('url') != false){

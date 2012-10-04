@@ -37,6 +37,7 @@
 		var mindate = -1;	// minimal date of the graph
 		var maxdate;	// maximal date of the graph
 		var slider;	// contains the slider object
+		var sigInstGlobal;
 		var currentDay = 0;	// current value of the slider
 		var parser; // contains the gexf parser object
 		var runningAnimation = false; // is currently an animation running ?

@@ -91,6 +91,7 @@
 		
 			<?php		
 			if($_POST['chosenmetric'] == "co-authorship"){
+				// fill years for KnowAAN, if no years have been entered ... => show all data
 				if($syear == ""){
 					$syear = "1900";
 				}
@@ -98,6 +99,7 @@
 					$eyear = "2100";
 				}
 				
+				// build url
 				$remoteURL = "http://$USER:$PASSWORD@".strtolower($conference).".aan.cs.upb.de/Export/CoAuthorGexf?startyear=$syear&endyear=$eyear&uploaded=true&eventseriesid=$idConference";
 
 				// download file to server
