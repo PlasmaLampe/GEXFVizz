@@ -1,5 +1,4 @@
 function sliderHandler(pos, slider) {
-    //document.getElementById("a1").innerHTML = "Slider value is " + pos;
 	var difference = currentDay - pos;
 	sigInstGlobal.setHideWrongTimeNodes(pos);
 }
