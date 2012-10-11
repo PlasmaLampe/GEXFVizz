@@ -18,8 +18,7 @@
 			file_put_contents("data/".basename($_GET['url']), file_get_contents($_GET['url']));
 		}
 		
-		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
-		$WebPREFIX = "http://131.234.31.148/";
+		include("variables.php");
 	?>
 	
 	<!-- include twitter bootstrap -->

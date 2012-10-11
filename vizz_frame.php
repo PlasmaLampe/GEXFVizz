@@ -16,8 +16,7 @@
 		$bcedges = $_GET['bcedges'];
 		$id = $_GET['id'];
 
-		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
-		$WebPREFIX = "http://131.234.31.148/";
+		include("variables.php")
 	?>
 	
     <!-- Le styles -->

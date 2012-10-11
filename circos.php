@@ -6,8 +6,8 @@
 		$metric = $_POST['metric'];
 		$rank = $_POST['itemcount'];
 		$style = $_POST['style'];
-		$ServletPREFIX = "http://gexfvizz.cs.upb.de:8080/GEXFServer/Servlet?";
-		$IP = "http://gexfvizz.cs.upb.de/";
+		
+		include("variables.php");
 	?>
     <meta charset="utf-8">
     <title>GEXF Vizz</title>
@@ -72,9 +72,9 @@
 		
 		// print all the things
 		//$small_cc_pic = preg_replace("/\\.[^.\\s]{3,4}$/", "", $cc_pic)."_small.png";
-		echo "<h3> ".$metric." (Top ".$rank.") | (<a href=\"".$IP."circos/gexfCircos.pdf\">I don't understand these diagrams!</a>)</h3>";
+		echo "<h3> ".$metric." (Top ".$rank.") | (<a href=\"".$WebPREFIX."circos/gexfCircos.pdf\">I don't understand these diagrams!</a>)</h3>";
 		echo "<p><a href=\"".$cc_pic."\"><img src=\"".$cc_pic."\" width=\"600\" height=\"600\"></a></p><br>";
-		echo "<h4>Download the circos configuration files:</h4> <a href=\"".$IP."circos/data/".$hash_clean.".zip\">download</a>"; 
+		echo "<h4>Download the circos configuration files:</h4> <a href=\"".$WebPREFIX."circos/data/".$hash_clean.".zip\">download</a>"; 
 		?>
 		
 		

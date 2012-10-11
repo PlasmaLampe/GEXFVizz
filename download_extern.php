@@ -3,7 +3,7 @@
   <head>
 	<?php
 		include("include/db.php"); // .htaccess secured :)
-		
+		include("variables.php"); 
 		$ctx = stream_context_create(array( 
 		    'http' => array( 
 		        'timeout' => 360 
@@ -28,7 +28,6 @@
 		$syear = $_POST['syear'];
 		$eyear = $_POST['eyear'];
 
-		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
 		
 		$ccremoteURL = $ServletPREFIX."eventseriesid=$idConference&graphtype=cc&syear=$syear&eyear=$eyear";
 		$bcremoteURL = $ServletPREFIX."eventseriesid=$idConference&graphtype=bc&syear=$syear&eyear=$eyear";

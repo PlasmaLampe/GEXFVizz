@@ -3,7 +3,8 @@
   <head>
 	<?php
 		$url = $_GET['url'];
-		$ServletPREFIX = "http://131.234.31.148:8080/GEXFServer/Servlet?";
+		
+		include("variables.php");
 	?>
     <meta charset="utf-8">
     <title>GEXF Vizz</title>
