@@ -1,0 +1,2 @@
+TomcatURLToServlet=http://131.234.31.148:8080/GEXFServer/Servlet?
+ServerURL=http://131.234.31.148/
